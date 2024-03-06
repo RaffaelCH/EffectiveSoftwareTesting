@@ -7,6 +7,15 @@ class MaximumSubarrayTest {
     class SpecificationBasedTests {
 
         @Test
+        @DisplayName("Test the result of the example given in the assignment")
+        void testNullInput() {
+            int[] input = null;
+            int expected = 0;
+            int actual = MaximumSubarray.maxSubArray(input);
+            Assertions.assertEquals(expected, actual);
+        }
+
+        @Test
         @DisplayName("Test if the return is 0 when an empty array is given")
         void testEmptyArray() {
             int[] input = {};
