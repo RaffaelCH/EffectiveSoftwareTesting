@@ -64,17 +64,17 @@ class MyAtoiTest {
     }
 
     @Test
-    @DisplayName("Returns converted number despite in between space")
+    @DisplayName("Cuts off string, invalid input")
     void testInBetweenSpace(){
         int actual = MyAtoi.myAtoi("2344 508 50");
         int actualPlusSign = MyAtoi.myAtoi("+ 234450850");
         int actualMinusSign = MyAtoi.myAtoi("-  234450850");
         int actualWithZeroes = MyAtoi.myAtoi("00 233400");
 
-        Assertions.assertEquals(234450850, actual);
-        Assertions.assertEquals(234450850, actualPlusSign);
-        Assertions.assertEquals(-234450850, actualMinusSign);
-        Assertions.assertEquals(233400, actualWithZeroes);
+        Assertions.assertEquals(2344, actual);
+        Assertions.assertEquals(specialCaseOutput, actualPlusSign);
+        Assertions.assertEquals(-specialCaseOutput, actualMinusSign);
+        Assertions.assertEquals(specialCaseOutput, actualWithZeroes);
     }
 
     @Test
