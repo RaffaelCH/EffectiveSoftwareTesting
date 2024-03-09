@@ -5,6 +5,7 @@ class NeedleInHay {
         if (haystack == null || needle == null) return -1;
         if (haystack.isEmpty() && needle.isEmpty()) return 0;
         if (haystack.isEmpty()) return -1;
+        if (needle.isEmpty()) return 0;
 
         int lenHay = haystack.length(), lenNed = needle.length();
 
