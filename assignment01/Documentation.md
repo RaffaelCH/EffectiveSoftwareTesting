@@ -26,6 +26,9 @@ I found that if the haystack was not an empty String but the needle was, an exce
 With the test written based on the specifications, I already achieved 100% condition+branch coverage.
 
 ## palindrome
+
+#### Specification-Based Testing
+
 After reading the description, I split up the test into partitions.
 The first partition was from the lower bound (-2^20) to -1,
 and the second was from 0 to upper bound (2^20).
@@ -48,3 +51,12 @@ Finally, I added tests for palindromes that were close to the boundaries
 I used the same tests for both palindrome implementations.
 For PalindromeTwo, I discovered that the test case with 0 failed.
 I fixed it by adding another clause to test for single digits.
+
+#### Structural Testing
+
+For PalindromeOne I already achieved 100% coverage.
+
+For PalindromeTwo I had 90% coverage. I added a test for 999 to test the long conditional,
+as this was a path returning true I had not covered but found important.
+There remained two cases, but as the condition was already covered
+and I didn't find a test case for them within a reasonable time frame, I skipped them.
