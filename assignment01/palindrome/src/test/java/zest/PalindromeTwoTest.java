@@ -15,6 +15,7 @@ class PalindromeTwoTest {
     @Test
     void multiple_digits_palindrome() {
         assertTrue(PalindromeTwo.isPalindrome(22));
+        assertTrue(PalindromeTwo.isPalindrome(999));
         assertTrue(PalindromeTwo.isPalindrome(1_000_001));
     }
 
