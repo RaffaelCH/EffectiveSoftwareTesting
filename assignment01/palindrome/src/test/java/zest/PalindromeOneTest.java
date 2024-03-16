@@ -14,12 +14,14 @@ class PalindromeOneTest {
     @Test
     void multiple_digits_palindrome() {
         assertTrue(PalindromeOne.isPalindrome(22));
+        assertTrue(PalindromeOne.isPalindrome(545));
         assertTrue(PalindromeOne.isPalindrome(1_000_001));
     }
 
     @Test
     void multiple_digits_not_palindrome() {
         assertFalse(PalindromeOne.isPalindrome(10));
+        assertFalse(PalindromeOne.isPalindrome(100));
         assertFalse(PalindromeOne.isPalindrome(999990));
     }
 

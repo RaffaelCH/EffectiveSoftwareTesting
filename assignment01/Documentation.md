@@ -13,6 +13,7 @@
 ## needle_in_hay
 
 #### Specification-Based Testing
+
 First I read the specs, and created a simple test case to explore how it works.
 
 Then I identified the partitions, some of which were already described in the specification (any string null, both inputs empty). I then combined the partitions for the inputs to create test cases. If one of the inputs was exceptional (null, empty string), I wrote a single test for it.
@@ -24,6 +25,10 @@ I found that if the haystack was not an empty String but the needle was, an exce
 #### Structural Testing
 
 With the test written based on the specifications, I already achieved 100% condition+branch coverage.
+
+#### Mutation Testing
+
+The existing tests were able to catch 100% of the generated mutants.
 
 ## palindrome
 
@@ -58,5 +63,16 @@ For PalindromeOne I already achieved 100% coverage.
 
 For PalindromeTwo I had 90% coverage. I added a test for 999 to test the long conditional,
 as this was a path returning true I had not covered but found important.
+I also added a test for 9, as single to multiple digits was a boundary that I missed.
 There remained two cases, but as the condition was already covered
 and I didn't find a test case for them within a reasonable time frame, I skipped them.
+
+#### Mutation Testing
+
+For PalindromeOne my tests killed 7/8 mutations, missing the Change Conditional Boundary mutation.
+This mutation cannot be tested, as the program behaves the same.
+
+For PalindromeTwo my tests killed 25/37 mutations.
+The first mutation was to change the conditional boundary. But as the resulting code is equivalent, this cannot be caught by a test.
+The second mutation was to replace modulus with multiplication. This impacted just an optimization, and the result was equivalent.
+Another mutation was to replace integer addition with subtraction. I added a test with 209 to kill this mutant, to better cover the large conditional.
