@@ -9,7 +9,7 @@ class PalindromeTwoTest {
     @Test
     void single_digit_is_palindrome() {
         assertTrue(PalindromeTwo.isPalindrome(0));
-        assertTrue(PalindromeTwo.isPalindrome(1));
+        assertTrue(PalindromeTwo.isPalindrome(9));
     }
 
     @Test
@@ -22,6 +22,8 @@ class PalindromeTwoTest {
     @Test
     void multiple_digits_not_palindrome() {
         assertFalse(PalindromeTwo.isPalindrome(10));
+        assertFalse(PalindromeTwo.isPalindrome(87));
+        assertFalse(PalindromeTwo.isPalindrome(209));
         assertFalse(PalindromeTwo.isPalindrome(999990));
     }
 
