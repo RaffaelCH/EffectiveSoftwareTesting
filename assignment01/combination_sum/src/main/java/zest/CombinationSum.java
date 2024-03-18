@@ -14,6 +14,29 @@ public class CombinationSum {
     }
 
     private static void getResult(List<List<Integer>> result, List<Integer> cur, int[] candidates, int target, int start) {
+        // bug fix attempt
+        List<Integer> candidateList = new ArrayList<>(){
+            {
+                for(int k : candidates){
+                    add(k);
+                }
+            }
+        };
+
+        for(int k : candidateList){
+            if(k == 0){
+                candidateList.remove(k);
+                List<Integer> zeroResult = new ArrayList<>(){
+                    {
+                        add(0);
+                        add(target);
+                    }
+                };
+            }
+        }
+
+
+
         if (target > 0) {
             for (int i = start; i < candidates.length && target >= candidates[i]; i++) {
                 cur.add(candidates[i]);
