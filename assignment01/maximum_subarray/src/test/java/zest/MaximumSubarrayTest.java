@@ -110,12 +110,13 @@ class MaximumSubarrayTest {
     @Nested
     class StructuralTests {
 
+        @Test
+        @DisplayName("Test the creation of a new class")
+        void testNewClass() {
+            MaximumSubarray maximumSubarray = new MaximumSubarray();
+            Assertions.assertNotNull(maximumSubarray);
+        }
 
-    }
-
-    @Nested
-    class MutationTests {
-        // TODO
     }
 
 }
