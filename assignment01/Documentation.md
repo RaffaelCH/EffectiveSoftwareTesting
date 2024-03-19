@@ -22,11 +22,11 @@ With this change, all tests passed.
 **Structural Testing:**
 With the specification-based testing, we did almost reach 100% coverage. The only uncovered "instruction" was line 3, the class itself respectively its instantiation.   
 After creating the test to check whether the instantiated MaximumSubarray class is not null, we reached 100% coverage.
-The test is not really needed if we'd not care about coverage criteria, as it is a given that the class is not null. 
+The test is not really needed if we'd not care about coverage criteria, as it is a given that the class is not null.\
 ![coverage_jacoco.png](maximum_subarray/coverage_jacoco.png)
 
 **Mutation Testing:**
-As you can see in the screenshot below, there are no surviving mutants, i.e. we reached 100% mutation coverage.
+As you can see in the screenshot below, there are no surviving mutants, i.e. we reached 100% mutation coverage.\
 ![coverage_pitest.png](maximum_subarray/coverage_pitest.png)
 
 ## median_of_arrays
@@ -45,14 +45,14 @@ Further, the variables tmp are unused. But the code still works without them bei
 Other than that , we did not find any bugs.
 
 **Structural Testing:** After doing the specification-based testing, we reached almost 100% coverage.
-The only uncovered element is in line 30, we only had tests with the second input being unsorted. After having a test with the first input unsorted, we reached 100% coverage.
+The only uncovered element is in line 30, we only had tests with the second input being unsorted. After having a test with the first input unsorted, we reached 100% coverage.\
 ![jacoco_coverage.png](median_of_arrays/jacoco_coverage.png)
 
 **Mutation Testing:**
 We did not reach 100% mutation coverage. We killed 40 out of 46 mutants. We now describe one of the mutants per category (mutants in 3 different categories survived):\
 **Negated conditional:** A surviving mutant is in the first line of the `getMin` method (line 7). The condition is negated (by adding a !) and the tests still pass. As this is a helper method, it might be worth testing it. But implicitly, the test suite already tests this method thoroughly.\
 **Changed conditional boundary:** Another surviving mutant is in the second line of the `isArraySorted` "helper" method (line 19). It likely changes >= to >. This means that we did not have a test where two subsequent elements in the array are the same. This would be a good test to implement.\
-**Replaced integer addition with subtraction:** In line 4 of the `findMedianSortedArrays` method (line 32), a mutant survived. The m + n is changed to m - n, and the tests still pass. This is correct. m + n % X is the same as m - n % X. Therefore, it does not make sense to create a test for this mutant.
+**Replaced integer addition with subtraction:** In line 4 of the `findMedianSortedArrays` method (line 32), a mutant survived. The m + n is changed to m - n, and the tests still pass. This is correct. m + n % X is the same as m - n % X. Therefore, it does not make sense to create a test for this mutant.\
 ![pitest_coverage.png](median_of_arrays/pitest_coverage.png)
 
 ## needle_in_hay
