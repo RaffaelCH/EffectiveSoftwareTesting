@@ -2,8 +2,6 @@ package zest;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 class CombinationSumTest {
@@ -11,7 +9,7 @@ class CombinationSumTest {
     @DisplayName("Returns empty array for empty array, null input")
     void invalidInput(){
         Assertions.assertEquals(0, CombinationSum.combinationSum(new int[]{}, 7).size());
-        // Assertions.assertEquals(0, CombinationSum.combinationSum(null, 7).size());
+        Assertions.assertEquals(0, CombinationSum.combinationSum(null, 7).size());
     }
 
     @Test
@@ -53,8 +51,8 @@ class CombinationSumTest {
         Assertions.assertEquals(elements.size(), actual.get(1).size());
     }
 
-    /* @Test
-    @DisplayName("hh")
+    @Test
+    @DisplayName("case of zeroes being included in lis of candidates")
     void zeroIncluded(){
         ArrayList<Integer> elements = new ArrayList<Integer>() {
             {
@@ -64,6 +62,16 @@ class CombinationSumTest {
 
         List<List<Integer>> actual = CombinationSum.combinationSum(new int[]{0, 5, 6, 8}, 5);
         Assertions.assertEquals(149, actual.size());
-        Assertions.assertTrue(actual.get(0).containsAll(elements));
-    } */
+        for(int j = 0; j<149; j++) {
+            List<Integer> partialResult = new ArrayList<>();
+            for (int i = 0; i < j; i++) {
+                partialResult.add(0);
+            }
+            partialResult.add(5);
+            Assertions.assertEquals(partialResult.size(), actual.get(j).size());
+            for (int k = 0; k < partialResult.size(); k++) {
+                Assertions.assertEquals(partialResult.get(k), actual.get(j).get(k));
+            }
+        }
+    }
 }
