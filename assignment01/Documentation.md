@@ -1,7 +1,41 @@
 ## atoi
+**Specification-based testing** 
+Input variable: string to be converted (type String), output variable: 32-bit signed integer ([-2^31, 2^31-1])
+
+Per the specification, any string whose integer is contained in the specified range of [-2^31, 2^31 - 1] would be a valid input, however, there are corner cases.
+1. Null must return output 0 (wouldn't be convertible)
+2. Leading whitespaces must be removed before parsing.
+3. String is stopped parsing as soon as a non-digit character is reached. This includes strings only containing non-digit characters or spaces (empty string).
+4. Strings whose integer value exceed the integer range must be clamped to the next closest integer when being converted.
+
+First, I tested the special cases null, empty string and leading spaces. Even though it is not specified, I wrote a test for the case of trailing spaces as well
+because those are equally meaningless when converting to an integer as spaces can't be converted logically. I further added one for both leading and trailing spaces.
+Another case listed in the specifiication required stopping parsing when non-digit characters are reached. I tested by this adding spaces in between but also including 
+digits in between letters. Due to that specification, I verified that spaces after +/- signs also produce special case output 0.
+Lastly, I tested the boundaries with integers out of the specified, possible range before testing a normal case where the conversion faces no exceptions for cases with 
+the signs specified and without. This gave 96% test coverage with the 4% missing being caused due to the class name (![atoi_jacoco.png]).
+
+**Structural testing** Specification-based testing already provided the necessary coverage (ignoring the class name issue)
+
+**Mutation testing**
 
 ## combination_sum
+**Specification-based testing**
+Input variable: array of integers + target integer, output variable: list of integer lists 
 
+**Structural testing**
+Based on the specification, unique combinations of numbers summing up to the target value have to returned. This
+makes empty list and null invalid inputs and an empty list should be returned as output in those cases. Hence, I tested
+those cases. Further, they specified that numbers can be used multiple times when summing up to a target. To test this, 
+I wrote a test case using a candidate set with 1 in it to verify that the combination of only ones appears. Additionally,
+I checked for the case where target appears in the candidates and hence the target itself should be included in the result
+as a possible "sum". Another similar case which included having to bug fix and modify the code was the case of a zero being
+a possible candidates. For this, I used the assumption in the specification of 149 being the maximum number of combinations
+returned. Finally, I tested a normal, simple case.
+This resulted in 97% test coverage (![combinationsum_jacoco.png]) with the 3% being caused by the modified code and the class
+name. However, everything important has been covered.
+
+**Mutation testing**
 ## frac2dec
 
 ## generate_parentheses

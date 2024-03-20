@@ -46,8 +46,6 @@ class MyAtoiTest {
 
         Assertions.assertEquals(specialCaseOutput, actual);
         Assertions.assertEquals(specialCaseOutput, actualSpaces);
-
-
     }
 
     @Test
@@ -69,11 +67,13 @@ class MyAtoiTest {
         int actual = MyAtoi.myAtoi("2344 508 50");
         int actualPlusSign = MyAtoi.myAtoi("+ 234450850");
         int actualMinusSign = MyAtoi.myAtoi("-  234450850");
+        int actualLetters = MyAtoi.myAtoi("2344ab56");
         int actualWithZeroes = MyAtoi.myAtoi("00 233400");
 
         Assertions.assertEquals(2344, actual);
         Assertions.assertEquals(specialCaseOutput, actualPlusSign);
         Assertions.assertEquals(-specialCaseOutput, actualMinusSign);
+        Assertions.assertEquals(2344, actualLetters);
         Assertions.assertEquals(specialCaseOutput, actualWithZeroes);
     }
 
