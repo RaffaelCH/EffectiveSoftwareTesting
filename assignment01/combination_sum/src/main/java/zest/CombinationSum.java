@@ -29,14 +29,7 @@ public class CombinationSum {
                     cur.remove(cur.size() - 1);
                 } else {
                     zeroSeen = true;
-                    for(int j = 0; j<149; j++){
-                        List<Integer> partialResult = new ArrayList<>();
-                        for(int k = 0; k<j; k++){
-                            partialResult.add(0);
-                        }
-                        partialResult.add(target);
-                        result.add(partialResult);
-                    }
+                    generateZeroesCombinations(result, target);
                 }
             }
         } else if (target == 0) {
@@ -45,6 +38,18 @@ public class CombinationSum {
                 result.remove(result.size()-1);
             }
             zeroSeen = false;
+        }
+    }
+
+    // helper method
+    private static void generateZeroesCombinations(List<List<Integer>> result, int target) {
+        for(int j = 0; j<149; j++){
+            List<Integer> partialResult = new ArrayList<>();
+            for(int k = 0; k<j; k++){
+                partialResult.add(0);
+            }
+            partialResult.add(target);
+            result.add(partialResult);
         }
     }
 }
