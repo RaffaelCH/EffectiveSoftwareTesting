@@ -77,15 +77,15 @@ class MyAtoiTest {
         Assertions.assertEquals(specialCaseOutput, actualWithZeroes);
     }
 
-    /* @Test
+    @Test
     @DisplayName("Returns clamped number")
     void testOutOfRange() {
-        int actualMin = MyAtoi.myAtoi(String.valueOf(Integer.MIN_VALUE-1));
-        int actualMax = MyAtoi.myAtoi(String.valueOf(Integer.MAX_VALUE+1));
+        int actualMin = MyAtoi.myAtoi("-2147483649");
+        int actualMax = MyAtoi.myAtoi("2147483648");
 
         Assertions.assertEquals(Integer.MIN_VALUE, actualMin);
         Assertions.assertEquals(Integer.MAX_VALUE, actualMax);
-       } */
+       }
 
     @Test
     @DisplayName("Returns converted number for normal number inputs")
