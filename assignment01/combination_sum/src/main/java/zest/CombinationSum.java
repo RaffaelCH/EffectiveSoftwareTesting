@@ -8,15 +8,12 @@ public class CombinationSum {
     static boolean zeroSeen = false;
     public static List<List<Integer>> combinationSum(int[] candidates, int target) {
         // bug fix: null case
+        List<List<Integer>> result = new ArrayList<>();
         if (candidates != null) {
             Arrays.sort(candidates);
-            List<List<Integer>> result = new ArrayList<>();
             getResult(result, new ArrayList<Integer>(), candidates, target, 0);
-
-            return result;
-        } else {
-            return new ArrayList<List<Integer>>();
         }
+            return result;
     }
 
     private static void getResult(List<List<Integer>> result, List<Integer> cur, int[] candidates, int target, int start) {

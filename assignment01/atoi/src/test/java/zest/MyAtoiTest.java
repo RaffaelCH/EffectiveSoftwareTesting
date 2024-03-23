@@ -85,7 +85,17 @@ class MyAtoiTest {
 
         Assertions.assertEquals(Integer.MIN_VALUE, actualMin);
         Assertions.assertEquals(Integer.MAX_VALUE, actualMax);
-       }
+    }
+
+    @Test
+    @DisplayName("Returns boundary values")
+    void testBoundaries() {
+        int actualMin = MyAtoi.myAtoi("-2147483648");
+        int actualMax = MyAtoi.myAtoi("2147483647");
+
+        Assertions.assertEquals(Integer.MIN_VALUE, actualMin);
+        Assertions.assertEquals(Integer.MAX_VALUE, actualMax);
+    }
 
     @Test
     @DisplayName("Returns converted number for normal number inputs")

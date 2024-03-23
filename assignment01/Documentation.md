@@ -13,7 +13,7 @@ because those are equally meaningless when converting to an integer as spaces ca
 Another case listed in the specifiication required stopping parsing when non-digit characters are reached. I tested by this adding spaces in between but also including 
 digits in between letters. Due to that specification, I verified that spaces after +/- signs also produce special case output 0.
 Lastly, I tested the boundaries with integers out of the specified, possible range before testing a normal case where the conversion faces no exceptions for cases with 
-the signs specified and without. This gave 96% test coverage with the 4% missing being caused due to the class name (![atoi_jacoco.png]).
+the signs specified and without. This gave 96% test coverage with the 4% missing being caused due to the class name ![atoi_jacoco.png](atoi/atoi_jacoco.png).
 
 **Structural testing** 
 Specification-based testing already provided the necessary coverage (ignoring the class name issue)
@@ -34,11 +34,12 @@ I checked for the case where target appears in the candidates and hence the targ
 as a possible "sum". Another similar case which included having to bug fix and modify the code was the case of a zero being
 a possible candidates. For this, I used the assumption in the specification of 149 being the maximum number of combinations
 returned. Finally, I tested a normal, simple case.
-This resulted in 97% test coverage ![combinationsum_jacoco.png]() with the 3% being caused by the modified code and the class
+This resulted in 97% test coverage ![combinationsum_jacoco.png](combination_sum/combinationsum_jacoco.png) with the 3% being caused by the modified code and the class
 name. However, everything important has been covered.
 
 **Mutation testing**
 ![combinationsum_pitest.png](combination_sum/combinationsum_pitest.png)
+100% mutation test coverage with the line coverage being not 100% due to the class line issue
 
 ## frac2dec
 
