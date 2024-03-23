@@ -104,10 +104,12 @@ class MyAtoiTest {
         int actualPlusSign = MyAtoi.myAtoi("+234450850");
         int actualMinusSign = MyAtoi.myAtoi("-234450850");
         int actualWithZeroes = MyAtoi.myAtoi("00233400");
+        int conditionalBoundary = MyAtoi.myAtoi("214748364");
 
         Assertions.assertEquals(234450850, actual);
         Assertions.assertEquals(234450850, actualPlusSign);
         Assertions.assertEquals(-234450850, actualMinusSign);
         Assertions.assertEquals(233400, actualWithZeroes);
+        Assertions.assertEquals(214748364, conditionalBoundary);
     }
 }

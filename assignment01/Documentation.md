@@ -12,7 +12,7 @@ First, I tested the special cases null, empty string and leading spaces. Even th
 because those are equally meaningless when converting to an integer as spaces can't be converted logically. I further added one for both leading and trailing spaces.
 Another case listed in the specifiication required stopping parsing when non-digit characters are reached. I tested by this adding spaces in between but also including 
 digits in between letters. Due to that specification, I verified that spaces after +/- signs also produce special case output 0.
-Lastly, I tested the boundaries with integers out of the specified, possible range before testing a normal case where the conversion faces no exceptions for cases with 
+modiLastly, I tested the boundaries with integers out of the specified possible range and also integer min_value and max_value before testing a normal case where the conversion faces no exceptions for cases with 
 the signs specified and without. This gave 96% test coverage with the 4% missing being caused due to the class name ![atoi_jacoco.png](atoi/atoi_jacoco.png).
 
 **Structural testing** 
