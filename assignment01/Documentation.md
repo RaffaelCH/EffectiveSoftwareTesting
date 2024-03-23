@@ -15,9 +15,11 @@ digits in between letters. Due to that specification, I verified that spaces aft
 Lastly, I tested the boundaries with integers out of the specified, possible range before testing a normal case where the conversion faces no exceptions for cases with 
 the signs specified and without. This gave 96% test coverage with the 4% missing being caused due to the class name (![atoi_jacoco.png]).
 
-**Structural testing** Specification-based testing already provided the necessary coverage (ignoring the class name issue)
+**Structural testing** 
+Specification-based testing already provided the necessary coverage (ignoring the class name issue)
 
 **Mutation testing**
+![atoi_pitest.png](atoi/atoi_pitest.png)
 
 ## combination_sum
 **Specification-based testing**
@@ -32,10 +34,12 @@ I checked for the case where target appears in the candidates and hence the targ
 as a possible "sum". Another similar case which included having to bug fix and modify the code was the case of a zero being
 a possible candidates. For this, I used the assumption in the specification of 149 being the maximum number of combinations
 returned. Finally, I tested a normal, simple case.
-This resulted in 97% test coverage (![combinationsum_jacoco.png]) with the 3% being caused by the modified code and the class
+This resulted in 97% test coverage ![combinationsum_jacoco.png]() with the 3% being caused by the modified code and the class
 name. However, everything important has been covered.
 
 **Mutation testing**
+![combinationsum_pitest.png](combination_sum/combinationsum_pitest.png)
+
 ## frac2dec
 
 ## generate_parentheses
