@@ -43,45 +43,72 @@ name. However, everything important has been covered.
 
 ## frac2dec
 
-These are the test senarios:
+### Specification Testing for frac2dec
 
-- Simple fractions are checked to confirm the conversion is accurate for fractions that do not repeat.
-- Repeating fractions are evaluated to ensure that the repeating sequences are correctly identified and represented with parentheses.
-- Fractions resulting in whole numbers verify that the absence of a fractional part is properly processed.
-- Negative fractions ascertain that the sign is correctly applied to the result, and that the function correctly handles scenarios where both numerator and denominator are negative.
-- Zero numerator cases confirm that the function returns "0"
-- Zero denominator cases are expected to throw an ArithmeticException, aligning with the rule against division by zero.
-- Large numbers test the function's ability to handle integer overflow 
-conditions.
-- Long repeating decimals ensure that the method can handle complex repeating patterns in fractions.
+Test Scenarios:
 
-The coverage report reflects the thoroughness of the tests, with 97% instruction coverage and 100% branch coverage in the class, indicating nearly all code paths are exercised. In mutation testing, the method exhibits an 89% mutation coverage rate, revealing a strong resilience to potential code changes or injected faults. The test strength also stands at 89%, showcasing the test suite's ability to catch introduced defects effectively.
+- Simple Fractions: Verify conversion accuracy for fractions without repeating decimals 
+- Repeating Fractions: Ensure correct identification and representation of repeating sequences using parentheses 
+- Whole Numbers: Confirm proper handling of fractions resulting in whole numbers 
+- Negative Fractions: Test for correct sign application and handling of negative numerators and denominators 
+- Zero Numerator: Verify that the function returns "0" 
+- Zero Denominator: Expect an ArithmeticException to be thrown (division by zero).
+- Large Numbers: Test for integer overflow handling (e.g., very large numerator and/or denominator).
+- Long Repeating Decimals: Ensure the method can handle complex repeating patterns (e.g., fractions with long repeating sequences).
 
-Still it should be investigated the remaining 3% of instructions and 11% of mutations that were not covered. This might lead to discovering additional edge cases or rare scenarios not yet contemplated in the test suite
+Expected Coverage:
+
+Instruction Coverage: 97% (aiming for 100%)
+Branch Coverage: 100%
 
 ![frac2dec.png](frac2dec/frac2dec.png)
+
+### Mutation Testing for frac2dec
+
+Objective: Identify potential code changes or errors (mutations) that could affect functionality and assess the test suite's ability to detect these mutations.
+
+Mutation Coverage:
+
+Achieved: 89%
+Desired:Higher percentage (ideally close to 100%)
+
+Analysis:
+
+The high mutation coverage indicates the test suite is effective at exposing potential issues in the code. However, the remaining 11% of mutations represent areas where the tests might not be sufficient. Further test cases could be designed to target these uncovered mutations and strengthen the overall test suite's resilience to code changes.
 
 
 ![frac2dec_pit.png](frac2dec/frac2dec_pit.png)
 
 ## generate_parentheses
 
-These are the test senarios:
+### Specitication Testing for generate_parentheses
 
-- Negative Input: Validates that the method returns an empty list for negative values of n, as there can be no valid combinations.
-- Zero Parentheses: Checks the behavior when n is 0, confirming that the method returns an empty list since no parentheses can be formed.
-- Single Pair of Parentheses: Ensures that the method returns the only valid combination "()" when n is 1.
-- Two Pairs of Parentheses: Verifies that all valid combinations for n equals 2 are generated, specifically "(())" and "()()".
-- Three Pairs of Parentheses: Tests the method’s ability to generate all valid combinations when n equals 3, checking against a known set of 5 distinct sequences.
-- N Parentheses: For a larger n, such as 4, the test confirms that the method generates the correct number of unique combinations without necessarily verifying each one.
+Test Scenarios:
 
+- Negative Input: Verify an empty list is returned for negative values of n (no valid combinations).
+Zero Parentheses: Confirm an empty list is returned when n is 0 (no parentheses can be formed).
+- Single Pair: Ensure the method returns "()" for n equals 1 (only valid combination).
+- Two Pairs: Verify all combinations for n equals 2 are generated ("(())" and "()()").
+- Three Pairs: Test generation of all valid combinations for n equals 3 against a known set of 5 distinct sequences.
+- N Parentheses: For a larger n (e.g., 4), confirm the correct number of unique combinations are generated without necessarily verifying each one.
+Expected Coverage:
 
-The class's test coverage metrics, as provided, show strong results with 96% of instructions covered and all branches tested, indicating a rigorous verification of the code paths within the utility. Mutation testing results further underline the robustness of the test suite, with a 95% mutation coverage rate, suggesting that the tests are sensitive to potential changes or errors in the code, effectively catching unintended alterations that could affect functionality.
-
-While the test suite appears robust, the slightly less than perfect coverage suggests there may be specific scenarios or unusual cases that are not fully exercised. To push coverage to 100%, additional tests could be written to cover these missed instructions, ensuring the code’s behavior remains correct even in less common situations.
-
+Instruction Coverage: 96% (aiming for 100%)
+Branch Coverage: 100%
 
 ![paran.png](generate_parentheses/paran.png)
+
+
+### Mutation Testing for generate_parentheses
+
+Mutation Coverage:
+
+Achieved: 95%
+Desired:percentage (ideally close to 100%)
+
+Analysis:
+
+The high mutation coverage suggests a strong test suite. However, there might be specific edge cases or unusual scenarios not covered by the remaining 5% of mutations. Additional test cases targeting these areas could further enhance the test suite's robustness.
 
 
 ![paran_pit.png](generate_parentheses/paran_pit.png)
