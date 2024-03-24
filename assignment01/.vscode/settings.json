@@ -1,0 +1,6 @@
+{
+    "coverage-gutters.coverageReportFileName": "jacoco.xml",
+    "coverage-gutters.coverageFileNames": ["jacoco.xml"],
+    "coverage-gutters.xmlCoverageReportPath": "./target/site/jacoco/",
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
