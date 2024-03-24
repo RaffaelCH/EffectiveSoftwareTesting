@@ -85,7 +85,17 @@ class MyAtoiTest {
 
         Assertions.assertEquals(Integer.MIN_VALUE, actualMin);
         Assertions.assertEquals(Integer.MAX_VALUE, actualMax);
-       }
+    }
+
+    @Test
+    @DisplayName("Returns boundary values")
+    void testBoundaries() {
+        int actualMin = MyAtoi.myAtoi("-2147483648");
+        int actualMax = MyAtoi.myAtoi("2147483647");
+
+        Assertions.assertEquals(Integer.MIN_VALUE, actualMin);
+        Assertions.assertEquals(Integer.MAX_VALUE, actualMax);
+    }
 
     @Test
     @DisplayName("Returns converted number for normal number inputs")
@@ -94,10 +104,12 @@ class MyAtoiTest {
         int actualPlusSign = MyAtoi.myAtoi("+234450850");
         int actualMinusSign = MyAtoi.myAtoi("-234450850");
         int actualWithZeroes = MyAtoi.myAtoi("00233400");
+        int conditionalBoundary = MyAtoi.myAtoi("214748364");
 
         Assertions.assertEquals(234450850, actual);
         Assertions.assertEquals(234450850, actualPlusSign);
         Assertions.assertEquals(-234450850, actualMinusSign);
         Assertions.assertEquals(233400, actualWithZeroes);
+        Assertions.assertEquals(214748364, conditionalBoundary);
     }
 }

@@ -12,12 +12,14 @@ First, I tested the special cases null, empty string and leading spaces. Even th
 because those are equally meaningless when converting to an integer as spaces can't be converted logically. I further added one for both leading and trailing spaces.
 Another case listed in the specifiication required stopping parsing when non-digit characters are reached. I tested by this adding spaces in between but also including 
 digits in between letters. Due to that specification, I verified that spaces after +/- signs also produce special case output 0.
-Lastly, I tested the boundaries with integers out of the specified, possible range before testing a normal case where the conversion faces no exceptions for cases with 
-the signs specified and without. This gave 96% test coverage with the 4% missing being caused due to the class name (![atoi_jacoco.png]).
+modiLastly, I tested the boundaries with integers out of the specified possible range and also integer min_value and max_value before testing a normal case where the conversion faces no exceptions for cases with 
+the signs specified and without. This gave 96% test coverage with the 4% missing being caused due to the class name ![atoi_jacoco.png](atoi/atoi_jacoco.png).
 
-**Structural testing** Specification-based testing already provided the necessary coverage (ignoring the class name issue)
+**Structural testing** 
+Specification-based testing already provided the necessary coverage (ignoring the class name issue)
 
 **Mutation testing**
+![atoi_pitest.png](atoi/atoi_pitest.png)
 
 ## combination_sum
 **Specification-based testing**
@@ -32,58 +34,16 @@ I checked for the case where target appears in the candidates and hence the targ
 as a possible "sum". Another similar case which included having to bug fix and modify the code was the case of a zero being
 a possible candidates. For this, I used the assumption in the specification of 149 being the maximum number of combinations
 returned. Finally, I tested a normal, simple case.
-This resulted in 97% test coverage (![combinationsum_jacoco.png]) with the 3% being caused by the modified code and the class
+This resulted in 97% test coverage ![combinationsum_jacoco.png](combination_sum/combinationsum_jacoco.png) with the 3% being caused by the modified code and the class
 name. However, everything important has been covered.
 
 **Mutation testing**
+![combinationsum_pitest.png](combination_sum/combinationsum_pitest.png)
+100% mutation test coverage with the line coverage being not 100% due to the class line issue
 
 ## frac2dec
 
-These are the test senarios:
-
-- Simple fractions are checked to confirm the conversion is accurate for fractions that do not repeat.
-- Repeating fractions are evaluated to ensure that the repeating sequences are correctly identified and represented with parentheses.
-- Fractions resulting in whole numbers verify that the absence of a fractional part is properly processed.
-- Negative fractions ascertain that the sign is correctly applied to the result, and that the function correctly handles scenarios where both numerator and denominator are negative.
-- Zero numerator cases confirm that the function returns "0"
-- Zero denominator cases are expected to throw an ArithmeticException, aligning with the rule against division by zero.
-- Large numbers test the function's ability to handle integer overflow 
-conditions.
-- Long repeating decimals ensure that the method can handle complex repeating patterns in fractions.
-
-The coverage report reflects the thoroughness of the tests, with 97% instruction coverage and 100% branch coverage in the class, indicating nearly all code paths are exercised. In mutation testing, the method exhibits an 89% mutation coverage rate, revealing a strong resilience to potential code changes or injected faults. The test strength also stands at 89%, showcasing the test suite's ability to catch introduced defects effectively.
-
-Still it should be investigated the remaining 3% of instructions and 11% of mutations that were not covered. This might lead to discovering additional edge cases or rare scenarios not yet contemplated in the test suite
-
-![frac2dec.png](frac2dec/frac2dec.png)
-
-
-![frac2dec_pit.png](frac2dec/frac2dec_pit.png)
-
-
-
-
 ## generate_parentheses
-
-These are the test senarios:
-
-- Negative Input: Validates that the method returns an empty list for negative values of n, as there can be no valid combinations.
-- Zero Parentheses: Checks the behavior when n is 0, confirming that the method returns an empty list since no parentheses can be formed.
-- Single Pair of Parentheses: Ensures that the method returns the only valid combination "()" when n is 1.
-- Two Pairs of Parentheses: Verifies that all valid combinations for n equals 2 are generated, specifically "(())" and "()()".
-- Three Pairs of Parentheses: Tests the method’s ability to generate all valid combinations when n equals 3, checking against a known set of 5 distinct sequences.
-- N Parentheses: For a larger n, such as 4, the test confirms that the method generates the correct number of unique combinations without necessarily verifying each one.
-
-
-The class's test coverage metrics, as provided, show strong results with 96% of instructions covered and all branches tested, indicating a rigorous verification of the code paths within the utility. Mutation testing results further underline the robustness of the test suite, with a 95% mutation coverage rate, suggesting that the tests are sensitive to potential changes or errors in the code, effectively catching unintended alterations that could affect functionality.
-
-While the test suite appears robust, the slightly less than perfect coverage suggests there may be specific scenarios or unusual cases that are not fully exercised. To push coverage to 100%, additional tests could be written to cover these missed instructions, ensuring the code’s behavior remains correct even in less common situations.
-
-
-![paran.png](generate_parentheses/paran.png)
-
-
-![paran_pit.png](generate_parentheses/paran_pit.png)
 
 ## maximum_subarray
 The maximum subarray problem is to find the subarray with the largest sum of contiguous numbers.
@@ -154,12 +114,6 @@ With the test written based on the specifications, I already achieved 100% condi
 
 The existing tests were able to catch 100% of the generated mutants.
 
-![needle.png](needle_in_hay/needle.png)
-
-
-![needle_pit.png](needle_in_hay/needle_pit.png)
-
-
 ## palindrome
 
 #### Specification-Based Testing
@@ -206,9 +160,3 @@ For PalindromeTwo my tests killed 25/37 mutations.
 The first mutation was to change the conditional boundary. But as the resulting code is equivalent, this cannot be caught by a test.
 The second mutation was to replace modulus with multiplication. This impacted just an optimization, and the result was equivalent.
 Another mutation was to replace integer addition with subtraction. I added a test with 209 to kill this mutant, to better cover the large conditional.
-
-
-![palindrome.png](palindrome/palindrome.png)
-
-
-![palindrome_pit.png](palindrome/palindrome_pit.png)
