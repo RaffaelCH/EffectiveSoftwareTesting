@@ -1,9 +1,8 @@
 package zest;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertEquals;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class PalindromeOneTest {
 
@@ -17,7 +16,7 @@ public class PalindromeOneTest {
     public void multiple_digits_palindrome() {
         assertTrue(PalindromeOne.isPalindrome(22));
         assertTrue(PalindromeOne.isPalindrome(545));
-        assertTrue(PalindromeOne.isPalindrome(1_000_001));
+        assertTrue(PalindromeOne.isPalindrome(1000001));
     }
 
     @Test
@@ -31,12 +30,12 @@ public class PalindromeOneTest {
     public void negative_number_not_palindrome() {
         assertFalse(PalindromeOne.isPalindrome(-1));
         assertFalse(PalindromeOne.isPalindrome(-10));
-        assertFalse(PalindromeOne.isPalindrome(-1_000_001));
+        assertFalse(PalindromeOne.isPalindrome(-1000001));
     }
 
     @Test
     public void test_boundaries() {
-        assertFalse(PalindromeOne.isPalindrome(-2^20));
-        assertFalse(PalindromeOne.isPalindrome(2^20 - 1));
+        assertFalse(PalindromeOne.isPalindrome((int) -Math.pow(2, 20)));
+        assertFalse(PalindromeOne.isPalindrome((int) (Math.pow(2, 20) - 1)));
     }
 }

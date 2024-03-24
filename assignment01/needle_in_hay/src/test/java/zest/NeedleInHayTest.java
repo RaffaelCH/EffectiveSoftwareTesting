@@ -1,44 +1,44 @@
 package zest;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class NeedleInHayTest {
 
     @Test
     public void inputNullTest() {
-        assertEquals(NeedleInHay.find("haystack", null), -1);
-        assertEquals(NeedleInHay.find(null, "a"), -1);
+        assertEquals(-1, NeedleInHay.find("haystack", null));
+        assertEquals(-1, NeedleInHay.find(null, "a"));
     }
 
     @Test
     public void bothInputsEmptyTest() {
-        assertEquals(NeedleInHay.find("", ""), 0);
+        assertEquals(0, NeedleInHay.find("", ""));
     }
 
     @Test
     public void emptyNeedleTest() {
-        assertEquals(NeedleInHay.find("haystack", ""), 0);
+        assertEquals(0, NeedleInHay.find("haystack", ""));
     }
 
     @Test
     public void emptyHaystackTest() {
-        assertEquals(NeedleInHay.find("", "needle"), -1);
+        assertEquals(-1, NeedleInHay.find("", "needle"));
     }
 
     @Test
     public void needleNotInHaystackTest() {
-        assertEquals(NeedleInHay.find("x", "y"), -1);
-        assertEquals(NeedleInHay.find("xyzxyz", "a"), -1);
-        assertEquals(NeedleInHay.find("x", "xxx"), -1);
-        assertEquals(NeedleInHay.find("xyzxyz", "xx"), -1);
+        assertEquals(-1, NeedleInHay.find("x", "y"));
+        assertEquals(-1, NeedleInHay.find("xyzxyz", "a"));
+        assertEquals(-1, NeedleInHay.find("x", "xxx"));
+        assertEquals(-1, NeedleInHay.find("xyzxyz", "xx"));
     }
 
     @Test
     public void needleInHaystackTest() {
-        assertEquals(NeedleInHay.find("x", "x"), 0);
-        assertEquals(NeedleInHay.find("xyz", "y"), 1);
-        assertEquals(NeedleInHay.find("xyz", "xyz"), 0);
-        assertEquals(NeedleInHay.find("xyzabc", "c"), 5);
+        assertEquals(0, NeedleInHay.find("x", "x"));
+        assertEquals(1, NeedleInHay.find("xyz", "y"));
+        assertEquals(0, NeedleInHay.find("xyz", "xyz"));
+        assertEquals(5, NeedleInHay.find("xyzabc", "c"));
     }
 }

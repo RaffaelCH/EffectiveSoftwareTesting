@@ -1,7 +1,8 @@
 package zest;
 
-import static org.junit.Assert.assertEquals;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class Frac2DecTest {
 
@@ -35,9 +36,9 @@ public class Frac2DecTest {
         assertEquals("0", Frac2Dec.fractionToDecimal(0, 3));
     }
 
-    @Test(expected = ArithmeticException.class)
+    @Test
     public void testZeroDenominator() {
-        Frac2Dec.fractionToDecimal(1, 0);
+        assertThrows(ArithmeticException.class, () -> Frac2Dec.fractionToDecimal(1, 0));
     }
 
     @Test
