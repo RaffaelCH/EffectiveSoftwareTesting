@@ -1,8 +1,9 @@
 package zest;
 
+import net.jqwik.api.constraints.IntRange;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+import net.jqwik.api.*;
 
 class UniquePathsTest {
 
@@ -43,5 +44,33 @@ class UniquePathsTest {
         assertFalse(uniquePaths.uniquePaths(80, 80) < 0);
         assertFalse(uniquePaths.uniquePaths(90, 100) < 0);
         assertFalse(uniquePaths.uniquePaths(100, 100) < 0);
+    }
+
+    @Property
+    public void uniquePathsSuccess(
+        @ForAll
+        @IntRange(min = 1, max = 100)
+        int rows,
+        @ForAll
+        @IntRange(min = 1, max = 100)
+        int columns) {
+        assertTrue(uniquePaths.uniquePaths(rows, columns) > 0);
+    }
+
+    @Property
+    public void uniquePathsInvalidInput(
+            @ForAll("invalidInput")
+            int row,
+            @ForAll("invalidInput")
+            int column) {
+        assertThrows(IllegalArgumentException.class, () -> uniquePaths.uniquePaths(row, column));
+    }
+
+    @Provide
+    private Arbitrary<Integer> invalidInput() {
+        return Arbitraries.oneOf(
+                Arbitraries.integers().lessOrEqual(0),
+                Arbitraries.integers().greaterOrEqual(101)
+        );
     }
 }

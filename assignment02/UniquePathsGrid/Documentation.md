@@ -24,3 +24,13 @@ The other constraints in the ReadMe are not contracts.
 I wrote tests for the preconditions to see if they throw the correct exceptions.
 For the postconditions, I found some legal arguments that violated them,
 and wrote tests for them.
+
+### Property-Based Testing
+
+One property-based test was for the normal execution.
+As calculating the outcome would be non-trivial,
+I only tested that with valid inputs the method executes and the postconditions hold.
+
+The other property-based test was to test invalid inputs.
+There I tested that the method throws an exception for any invalid input
+(i.e., any parameter does not adhere to the contract).

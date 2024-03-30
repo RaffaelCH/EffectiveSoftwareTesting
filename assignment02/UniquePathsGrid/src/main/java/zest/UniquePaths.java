@@ -29,6 +29,8 @@ public class UniquePaths {
         for (int i = 1; i < m; i++) {
             for (int j = 1; j < n; j++) {
                 dp[i][j] = dp[i - 1][j] + dp[i][j - 1]; // The number of paths to the current cell is the sum of the paths to the cell above and to the left
+                // assert dp[i][j] > dp[i - 1][j] : "Integer Overflow";
+                // assert dp[i][j] > dp[i][j - 1] : "Integer Overflow";
             }
         }
 
