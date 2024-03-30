@@ -16,7 +16,7 @@ public class SumOfTwoIntegers {
     }
 
 
-    public long getLongSum(int a, int b) {
+    /*public long getLongSum(int a, int b) {
         long aLong = a;
         long bLong = b;
         while (bLong != 0) {
@@ -25,5 +25,5 @@ public class SumOfTwoIntegers {
             bLong = carry;  // Carry is shifted by one so that adding it to a gives the required sum
         }
         return aLong;
-    }
+    }*/
 }
