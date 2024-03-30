@@ -2,6 +2,19 @@ package zest;
 
 public class UniquePaths {
     public int uniquePaths(int m, int n) {
+        if (m < 1) {
+            throw new IllegalArgumentException("m must be >= 1");
+        }
+        if (n < 1) {
+            throw new IllegalArgumentException("n must be >= 1");
+        }
+        if (m > 100) {
+            throw new IllegalArgumentException("m must be <= 100");
+        }
+        if (n > 100) {
+            throw new IllegalArgumentException("m must be <= 100");
+        }
+
         int[][] dp = new int[m][n];
 
         // Initialize the first row and column to 1 since there's only one way to reach any cell in the first row or column
@@ -19,6 +32,9 @@ public class UniquePaths {
             }
         }
 
-        return dp[m - 1][n - 1]; // The bottom-right cell contains the total number of unique paths
+        var result = dp[m - 1][n - 1]; // The bottom-right cell contains the total number of unique paths
+
+        assert result >= 0: "Result cannot be negative";
+        return result;
     }
 }
