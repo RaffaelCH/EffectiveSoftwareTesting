@@ -19,7 +19,12 @@ as well as an alternative version returning a long which prevents this issue com
 
 ### Testing Contracts
 
-As the contract is already enforced by the compiler,
-the existing tests already verify the preconditions.
+As the contract is already enforced by the compiler, the existing tests already verify the preconditions.
 The post-condition cannot fail based on the current implementation.
 And if the implementation is changed, the existing tests should be enough.
+
+### Property-Based Testing
+
+The property-based test verifies the success case (i.e., getSum(a, b) == a + b).
+It's properties model the contract defined in the ReadMe (i.e., any valid integer).
+To show that an underflow/overflow can happen, I added additional assertions based on comparisons.

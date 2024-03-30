@@ -1,0 +1,106 @@
+"C:\Program Files\Java\jdk-17\bin\java.exe" -ea -Didea.test.cyclic.buffer.size=1048576 "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2\lib\idea_rt.jar=54021:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2\bin" -Dfile.encoding=UTF-8 -classpath "C:\Users\rafb\.m2\repository\org\junit\platform\junit-platform-launcher\1.9.1\junit-platform-launcher-1.9.1.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2\lib\idea_rt.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2\plugins\junit\lib\junit5-rt.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.2\plugins\junit\lib\junit-rt.jar;C:\Users\rafb\Downloads\Effective Software Testing\EffectiveSoftwareTesting\assignment02\SumofTwoIntegers\target\test-classes;C:\Users\rafb\Downloads\Effective Software Testing\EffectiveSoftwareTesting\assignment02\SumofTwoIntegers\target\classes;C:\Users\rafb\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.9.1\junit-jupiter-engine-5.9.1.jar;C:\Users\rafb\.m2\repository\org\junit\platform\junit-platform-engine\1.9.1\junit-platform-engine-1.9.1.jar;C:\Users\rafb\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\rafb\.m2\repository\org\junit\platform\junit-platform-commons\1.9.1\junit-platform-commons-1.9.1.jar;C:\Users\rafb\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.9.1\junit-jupiter-api-5.9.1.jar;C:\Users\rafb\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\rafb\.m2\repository\net\jqwik\jqwik\1.8.4\jqwik-1.8.4.jar;C:\Users\rafb\.m2\repository\net\jqwik\jqwik-api\1.8.4\jqwik-api-1.8.4.jar;C:\Users\rafb\.m2\repository\net\jqwik\jqwik-web\1.8.4\jqwik-web-1.8.4.jar;C:\Users\rafb\.m2\repository\net\jqwik\jqwik-time\1.8.4\jqwik-time-1.8.4.jar;C:\Users\rafb\.m2\repository\net\jqwik\jqwik-engine\1.8.4\jqwik-engine-1.8.4.jar" com.intellij.rt.junit.JUnitStarter -ideVersion5 -junit5 "zest.SumOfTwoIntegersTest,uniquePathsSuccess(int,int)"
+timestamp = 2024-03-30T15:54:26.771320700, SumOfTwoIntegersTest:uniquePathsSuccess = 
+  org.opentest4j.AssertionFailedError:
+    expected: <true> but was: <false>
+
+                              |-----------------------jqwik-----------------------
+tries = 54                    | # of calls to property
+checks = 54                   | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 81         | # of all combined edge cases
+edge-cases#tried = 5          | # of edge cases tried in current run
+seed = 5220757134120774301    | random seed to reproduce generated values
+
+Shrunk Sample (2 steps)
+-----------------------
+  arg0: -1
+  arg1: -2147483648
+
+Original Sample
+---------------
+  arg0: -2147483648
+  arg1: -14
+
+  Original Error
+  --------------
+  org.opentest4j.AssertionFailedError:
+    expected: <true> but was: <false>
+
+
+
+org.opentest4j.AssertionFailedError: 
+Expected :true
+Actual   :false
+<Click to see difference>
+
+
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:180)
+	at zest.SumOfTwoIntegersTest.uniquePathsSuccess(SumOfTwoIntegersTest.java:64)
+	at jdk.internal.reflect.GeneratedMethodAccessor1.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
+	at org.junit.platform.commons.support.ReflectionSupport.invokeMethod(ReflectionSupport.java:198)
+	at net.jqwik.engine.execution.CheckedPropertyFactory.lambda$createRawFunction$1(CheckedPropertyFactory.java:84)
+	at net.jqwik.engine.execution.CheckedPropertyFactory.lambda$createRawFunction$2(CheckedPropertyFactory.java:91)
+	at net.jqwik.engine.properties.CheckedFunction.execute(CheckedFunction.java:17)
+	at net.jqwik.api.lifecycle.AroundTryHook.lambda$static$0(AroundTryHook.java:57)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$2(HookSupport.java:48)
+	at net.jqwik.engine.hooks.lifecycle.TryLifecycleMethodsHook.aroundTry(TryLifecycleMethodsHook.java:56)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$3(HookSupport.java:53)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$2(HookSupport.java:48)
+	at net.jqwik.engine.hooks.lifecycle.BeforeTryMembersHook.aroundTry(BeforeTryMembersHook.java:69)
+	at net.jqwik.engine.execution.lifecycle.HookSupport.lambda$wrap$3(HookSupport.java:53)
+	at net.jqwik.engine.execution.CheckedPropertyFactory.lambda$createTryExecutor$0(CheckedPropertyFactory.java:60)
+	at net.jqwik.engine.execution.lifecycle.AroundTryLifecycle.execute(AroundTryLifecycle.java:23)
+	at net.jqwik.engine.properties.GenericProperty.lambda$createFalsifier$1(GenericProperty.java:229)
+	at net.jqwik.engine.properties.shrinking.PropertyShrinker.lambda$shrink$0(PropertyShrinker.java:55)
+	at net.jqwik.engine.properties.shrinking.PropertyShrinker.lambda$shrinkAsLongAsSampleImproves$6(PropertyShrinker.java:122)
+	at net.jqwik.engine.properties.shrinking.AbstractSampleShrinker.lambda$falsify$5(AbstractSampleShrinker.java:91)
+	at java.base/java.util.HashMap.computeIfAbsent(HashMap.java:1220)
+	at net.jqwik.engine.properties.shrinking.AbstractSampleShrinker.falsify(AbstractSampleShrinker.java:91)
+	at net.jqwik.engine.properties.shrinking.AbstractSampleShrinker.lambda$shrink$2(AbstractSampleShrinker.java:53)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:179)
+	at java.base/java.util.stream.ReferencePipeline$15$1.accept(ReferencePipeline.java:541)
+	at java.base/java.util.stream.Streams$StreamBuilderImpl.tryAdvance(Streams.java:397)
+	at java.base/java.util.stream.ReferencePipeline$7$1.accept(ReferencePipeline.java:280)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.tryAdvance(StreamSpliterators.java:300)
+	at net.jqwik.engine.support.StreamConcatenation$ConcatSpliterator.tryAdvance(StreamConcatenation.java:302)
+	at java.base/java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:129)
+	at java.base/java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:527)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:513)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:150)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.findAny(ReferencePipeline.java:652)
+	at net.jqwik.engine.properties.shrinking.AbstractSampleShrinker.shrink(AbstractSampleShrinker.java:63)
+	at net.jqwik.engine.properties.shrinking.ShrinkAndGrowShrinker.shrinkAndGrow(ShrinkAndGrowShrinker.java:58)
+	at net.jqwik.engine.properties.shrinking.ShrinkAndGrowShrinker.shrink(ShrinkAndGrowShrinker.java:28)
+	at net.jqwik.engine.properties.shrinking.ShrinkingAlgorithm.shrinkAndGrow(ShrinkingAlgorithm.java:70)
+	at net.jqwik.engine.properties.shrinking.ShrinkingAlgorithm.shrink(ShrinkingAlgorithm.java:40)
+	at net.jqwik.engine.properties.shrinking.PropertyShrinker.shrinkAsLongAsSampleImproves(PropertyShrinker.java:135)
+	at net.jqwik.engine.properties.shrinking.PropertyShrinker.lambda$shrink$3(PropertyShrinker.java:87)
+	at net.jqwik.engine.execution.lifecycle.CurrentTestDescriptor.runWithDescriptor(CurrentTestDescriptor.java:17)
+	at net.jqwik.engine.properties.shrinking.PropertyShrinker.lambda$withTimeout$4(PropertyShrinker.java:103)
+	at net.jqwik.engine.execution.lifecycle.CurrentDomainContext.runWithContext(CurrentDomainContext.java:28)
+	at net.jqwik.engine.properties.shrinking.PropertyShrinker.lambda$withTimeout$5(PropertyShrinker.java:101)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:373)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1182)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1655)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1622)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:165)
+
+
+Process finished with exit code -1
