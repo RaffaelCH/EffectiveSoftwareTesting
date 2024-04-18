@@ -66,3 +66,14 @@ The null check in the first piece of code exists because the last node can have 
 
 **Invariant 2:** The last node in the list should always have a null next.
 Code: `assert tail.next == null;`
+
+
+## Task 3: Testing Contracts
+We developed a suite of JUnit tests specifically aimed at verifying that the contracts are correctly enforced.
+We tested the following cases:
+- violation of the pre-condition should throw an AssertionError
+- no violation of the pre-condition should not throw an AssertionError
+- no violation of the post-condition should not throw an AssertionError
+- no violation of the invariant should not throw an AssertionError
+Testing other cases is not possible without actually modifying the code of the algorithm, which is not the purpose of this assignment.
+For example, we cannot change any input such that the code would violate the post-condition, because the code is correct and the post-condition is enforced. 
