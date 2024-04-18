@@ -1,4 +1,5 @@
 # MergeKSortedLists
+_Please note that we used the "old" version of the task to complete the exercise, as we already completed the task before the mail was sent._
 ## Task 1: Code Coverage
 In this task, we applied structural testing, trying to reach 100% line coverage, which we achieved successfully.
 All lines of code (LOC) are covered by the tests. 
