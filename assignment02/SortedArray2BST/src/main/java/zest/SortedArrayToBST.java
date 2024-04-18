@@ -36,7 +36,7 @@ public class SortedArrayToBST {
 
     }
 
-    private int calculateSize(TreeNode node) {
+    int calculateSize(TreeNode node) {
         // Calculate the size of the BST
         if (node == null) {
             return 0;
@@ -44,7 +44,7 @@ public class SortedArrayToBST {
         return 1 + calculateSize(node.left) + calculateSize(node.right);
     }
 
-    private void checkBST(TreeNode node, int min, int max) {
+    void checkBST(TreeNode node, int min, int max) {
         // Check if the BST is valid
         if (node == null) {
             return;
@@ -75,7 +75,7 @@ public class SortedArrayToBST {
         checkBST(result, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    private void checkInvariants(TreeNode node) {
+    void checkInvariants(TreeNode node) {
 
         // Invariant 1: The left subtree of a node contains only nodes with keys less than the node's key.
         if (node.left != null && node.left.val >= node.val)

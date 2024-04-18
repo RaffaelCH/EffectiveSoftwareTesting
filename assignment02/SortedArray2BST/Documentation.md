@@ -3,6 +3,7 @@
 We applied structural testing to apply 100% line coverage.
 We reached not only 100% line coverage but also 100% branch coverage.
 We used the JaCoCo plugin to analyze and generate coverage reports, the screenshots can be found in the ['Assets' folder](./Assets) as described in the assignment's instructions.
+The screenshots were created before we wrote the tests for the other tasks, so the coverage is only for the code coverage tests.
 
 ## Task 2: Designing Contracts
 ### Pre-Conditions
@@ -81,5 +82,6 @@ if (node.right != null) checkBST(node.right, node.val, Integer.MAX_VALUE);
 ```
 
 ## Task 3: Testing Contracts
+// TODO
 
 ## Task 4: Property-Based Testing
