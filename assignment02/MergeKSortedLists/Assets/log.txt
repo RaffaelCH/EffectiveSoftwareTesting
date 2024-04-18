@@ -1,0 +1,52 @@
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------------------< zest:MergeKSortedLists >-----------------------
+[INFO] Building MergeKSortedLists 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- jacoco:0.8.7:prepare-agent (default) @ MergeKSortedLists ---
+[INFO] argLine set to "-javaagent:/Users/tjoos/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar=destfile=/Users/tjoos/Documents/UZH/FS24/Efficient Software Testing/Projects/Assignment/assignment02/MergeKSortedLists/target/jacoco.exec"
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ MergeKSortedLists ---
+[INFO] skip non existing resourceDirectory /Users/tjoos/Documents/UZH/FS24/Efficient Software Testing/Projects/Assignment/assignment02/MergeKSortedLists/src/main/resources
+[INFO]
+[INFO] --- compiler:3.11.0:compile (default-compile) @ MergeKSortedLists ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 1 source file with javac [debug target 11] to target/classes
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ MergeKSortedLists ---
+[INFO] skip non existing resourceDirectory /Users/tjoos/Documents/UZH/FS24/Efficient Software Testing/Projects/Assignment/assignment02/MergeKSortedLists/src/test/resources
+[INFO]
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ MergeKSortedLists ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 1 source file with javac [debug target 11] to target/test-classes
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ MergeKSortedLists ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running zest.MergeKSortedListsTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in zest.MergeKSortedListsTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jacoco:0.8.7:report (report) @ MergeKSortedLists ---
+[INFO] Loading execution data file /Users/tjoos/Documents/UZH/FS24/Efficient Software Testing/Projects/Assignment/assignment02/MergeKSortedLists/target/jacoco.exec
+[INFO] Analyzed bundle 'MergeKSortedLists' with 2 classes
+[INFO]
+[INFO] --- jar:3.3.0:jar (default-jar) @ MergeKSortedLists ---
+[INFO] Building jar: /Users/tjoos/Documents/UZH/FS24/Efficient Software Testing/Projects/Assignment/assignment02/MergeKSortedLists/target/MergeKSortedLists-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.449 s
+[INFO] Finished at: 2024-04-18T18:16:08+02:00
+[INFO] ------------------------------------------------------------------------
+
+Process finished with exit code 0
