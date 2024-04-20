@@ -3,7 +3,7 @@ package zest;
 public class ClimbingStairs {
 
     /**
-     * @param value number of steps to reach the top. has to be positive integer.
+     * @param n value number of steps to reach the top. has to be positive integer.
      * @return number of distinct ways to climb to the top. has to be non-negative integer
      */
     public long climbStairs(int n) {
