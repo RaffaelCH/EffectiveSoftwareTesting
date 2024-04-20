@@ -1,0 +1,43 @@
+[INFO] Running zest.ClimbingStairsTest
+timestamp = 2024-04-20T17:49:08.361595500, ClimbingStairsTest:trivialInput =
+                              |-----------------------jqwik-----------------------
+tries = 2                     | # of calls to property
+checks = 2                    | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -5946934086863903945   | random seed to reproduce generated values
+
+
+timestamp = 2024-04-20T17:49:08.382129600, ClimbingStairsTest:isPositive =
+                              |-----------------------jqwik-----------------------
+tries = 45                    | # of calls to property
+checks = 45                   | # of not rejected calls
+generation = EXHAUSTIVE       | parameters are exhaustively generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 0          | # of all combined edge cases
+edge-cases#tried = 0          | # of edge cases tried in current run
+seed = -9152542708599979884   | random seed to reproduce generated values
+
+
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.379 s -- in zest.ClimbingStairsTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jacoco:0.8.8:report (default-cli) @ climbing-stairs ---
+[INFO] Loading execution data file C:\Users\nikit\IdeaProjects\EffectiveSoftwareTesting\assignment02\ClimbingStairs\target\jacoco.exec
+[INFO] Analyzed bundle 'climbing-stairs' with 1 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.693 s
+[INFO] Finished at: 2024-04-20T17:49:08+02:00
+[INFO] ------------------------------------------------------------------------

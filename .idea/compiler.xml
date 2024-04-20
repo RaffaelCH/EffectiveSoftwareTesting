@@ -9,6 +9,7 @@
         <module name="frac-2-dec" />
         <module name="palindrome" />
         <module name="combination-sum" />
+        <module name="climbing-stairs" />
         <module name="atoi-test" />
         <module name="median-of-arrays" />
         <module name="generate-parentheses" />
@@ -18,6 +19,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="atoi-test" target="11" />
+      <module name="climbing-stairs" target="11" />
       <module name="combination-sum" target="11" />
       <module name="frac-2-dec" target="11" />
       <module name="generate-parentheses" target="11" />
