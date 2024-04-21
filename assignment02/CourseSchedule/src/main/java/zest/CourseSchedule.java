@@ -5,7 +5,15 @@ import java.util.List;
 
 public class CourseSchedule {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-
+        // pre-conditions
+        assert numCourses > 0;
+        for(int[] prerequisite : prerequisites){
+            assert prerequisite.length == 2;
+            assert prerequisite[0] >= 0;
+            assert prerequisite[1] >= 0;
+            assert prerequisite[1] < numCourses;
+            assert prerequisite[0] != prerequisite[1];
+        }
 
         // Create a graph from prerequisites
         List<List<Integer>> graph = new ArrayList<>();

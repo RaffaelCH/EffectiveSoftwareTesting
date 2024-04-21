@@ -41,3 +41,4 @@ seed = -9152542708599979884   | random seed to reproduce generated values
 [INFO] Total time:  3.693 s
 [INFO] Finished at: 2024-04-20T17:49:08+02:00
 [INFO] ------------------------------------------------------------------------
+

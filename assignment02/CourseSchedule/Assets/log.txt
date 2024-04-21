@@ -1,0 +1,17 @@
+[INFO] Running zest.CourseScheduleTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 s -- in zest.CourseScheduleTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jacoco:0.8.8:report (default-cli) @ course-schedule ---
+[INFO] Loading execution data file C:\Users\nikit\IdeaProjects\EffectiveSoftwareTesting\assignment02\CourseSchedule\target\jacoco.exec
+[INFO] Analyzed bundle 'course-schedule' with 1 classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.509 s
+[INFO] Finished at: 2024-04-21T15:11:12+02:00
+[INFO] ------------------------------------------------------------------------
