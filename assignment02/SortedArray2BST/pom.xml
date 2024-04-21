@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>zest</groupId>
-    <artifactId>SortedArray2BST</artifactId>
+    <artifactId>sorted-array-2-bst</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

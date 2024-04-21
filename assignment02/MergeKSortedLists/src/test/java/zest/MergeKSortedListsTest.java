@@ -4,7 +4,7 @@ import net.jqwik.api.*;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -168,47 +168,40 @@ class MergeKSortedListsTest {
 
     }
 
-    @Nested
-    class PropertyBasedTests {
+    @Property
+    void testMergeKSortedLists(@ForAll("sortedListOfListNode") List<ListNode> lists) {
+        MergeKSortedLists mergeKSortedLists = new MergeKSortedLists();
+        ListNode result = mergeKSortedLists.mergeKLists(lists.toArray(new ListNode[0]));
 
-        // Use property-based testing techniques to derive tests for the provided Java solutions.
-        // Identify properties that should hold true for any inputs and document your rationale.
-        // Use a property-based testing framework to automate the testing process.
-        // hint: Add jqwik framework to Your pom.xml
+        assertNotNull(result);
 
-        @Property
-        @Report(Reporting.GENERATED)
-        void testMergeKSortedLists(
-                @ForAll("sortedListOfListNode") List<ListNode> lists
-        ) {
-            // Instantiate your class and call the method to test
-            MergeKSortedLists mergeKSortedLists = new MergeKSortedLists();
-            ListNode result = mergeKSortedLists.mergeKLists(lists.toArray(new ListNode[0]));
-
-            assertNotNull(result);
-            // Here you can assert results such as checking if the merged list is sorted
-        }
-
-        @Provide
-        Arbitrary<List<ListNode>> sortedListOfListNode() {
-            return Arbitraries.integers().list().ofMinSize(1).ofMaxSize(10) // Size of each sublist
-                    .map(integers -> {
-                        integers.sort(Integer::compare);
-                        return integers;
-                    })
-                    .map(this::convertToLinkedList);
-        }
-
-        private List<ListNode> convertToLinkedList(List<Integer> values) {
-            ListNode dummyHead = new ListNode(0);
-            ListNode current = dummyHead;
-            for (int value : values) {
-                current.next = new ListNode(value);
-                current = current.next;
+        // Check if the result is sorted ascending
+        ListNode current = result;
+        while (current != null) {
+            if (current.next != null) {
+                assertTrue(current.val <= current.next.val);
             }
-            return Arrays.asList(dummyHead.next); // Returns a single list containing the head of the linked list
+            current = current.next;
         }
-
     }
- 
+
+    @Provide
+    Arbitrary<List<ListNode>> sortedListOfListNode() {
+        return Arbitraries.integers().list().ofMinSize(0).ofMaxSize(10^4)
+                .map(integers -> {
+                    integers.sort(Integer::compare);
+                    return integers;
+                }).map(this::convertToLinkedList);
+    }
+
+    private List<ListNode> convertToLinkedList(List<Integer> values) {
+        ListNode dummyHead = new ListNode(0);
+        ListNode current = dummyHead;
+        for (int value : values) {
+            current.next = new ListNode(value);
+            current = current.next;
+        }
+        return Collections.singletonList(dummyHead.next);
+    }
+
 }
