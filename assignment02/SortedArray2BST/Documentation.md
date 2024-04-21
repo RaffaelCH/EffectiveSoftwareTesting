@@ -96,3 +96,7 @@ We tested the following:
 - Invariant 3: Both the left and right subtrees must be valid binary search trees.
 
 ## Task 4: Property-Based Testing
+The test generates random (sorted) arrays of different lengths by using the `sortedArrays` method.
+When the input array is empty, we check that the output tree is null.
+Otherwise, we check that the size of the created BST is the same as the input array length.
+Then, we check the postconditions and invariants as described in earlier tasks.
