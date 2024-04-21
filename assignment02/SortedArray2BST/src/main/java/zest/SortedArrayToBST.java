@@ -11,27 +11,23 @@ public class SortedArrayToBST {
 
     private void checkPreconditions(int[] nums) {
         // Check if the input array is null
-        if (nums == null) {
+        if (nums == null)
             throw new IllegalArgumentException("The input array must not be null.");
-        }
 
         // Check if the input array is in the range [0, 10^4]
-        if (nums.length > Math.pow(10, 4)) {
+        if (nums.length > Math.pow(10, 4))
             throw new IllegalArgumentException("The input array length must be in the range [0, 10^4].");
-        }
 
         // Check if the array nums is sorted ascending
         for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i] > nums[i + 1]) {
+            if (nums[i] > nums[i + 1])
                 throw new IllegalArgumentException("The input array must be sorted in ascending order.");
-            }
         }
 
         // Check if the array does not contain any duplicates
         for (int i = 0; i < nums.length - 1; i++) {
-            if (nums[i] == nums[i + 1]) {
+            if (nums[i] == nums[i + 1])
                 throw new IllegalArgumentException("The input array must not contain any duplicates.");
-            }
         }
 
     }
@@ -45,20 +41,17 @@ public class SortedArrayToBST {
     }
 
     void checkBST(TreeNode node, int min, int max) {
-        // Check if the BST is valid
-        if (node == null) {
-            return;
-        }
+        if (node == null) return;
 
-        if (node.val <= min || node.val >= max) {
-            throw new IllegalArgumentException("The input array must be a valid binary search tree.");
-        }
+        if ((min != Integer.MIN_VALUE && node.val <= min) || (max != Integer.MAX_VALUE && node.val >= max))
+            throw new IllegalArgumentException("The array is not a valid binary search tree.");
 
         checkBST(node.left, min, node.val);
         checkBST(node.right, node.val, max);
     }
 
-    private void checkPostconditions(TreeNode result, int[] nums) {
+
+    void checkPostconditions(TreeNode result, int[] nums) {
         // Postconditions:
         // Result length must be the same as the input (nums)
         // The result must be a balanced binary search tree
@@ -76,6 +69,8 @@ public class SortedArrayToBST {
     }
 
     void checkInvariants(TreeNode node) {
+
+        if(node == null) return;
 
         // Invariant 1: The left subtree of a node contains only nodes with keys less than the node's key.
         if (node.left != null && node.left.val >= node.val)

@@ -1,10 +1,12 @@
 package zest;
 
+import net.jqwik.api.*;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import java.util.Arrays;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class SortedArrayToBSTTest {
 
@@ -140,5 +142,38 @@ class SortedArrayToBSTTest {
         }
 
     }
+
+    @Property
+    void testSortedArrayToBST(@ForAll("sortedArrays") int[] nums) {
+        SortedArrayToBST sortedArrayToBST = new SortedArrayToBST();
+
+        TreeNode root = sortedArrayToBST.sortedArrayToBST(nums);
+
+        if (root == null) {
+            assert(nums.length == 0);
+        } else {
+            // Post-Condition: BST size = input array length
+            int expectedSize = nums.length;
+            int actualSize = sortedArrayToBST.calculateSize(root);
+            assertEquals(expectedSize, actualSize);
+
+            // Post-Condition: Check the postconditions of the BST
+            assertDoesNotThrow(() -> sortedArrayToBST.checkPostconditions(root, nums));
+
+            // Invariants: Check the invariant of the BST
+            assertDoesNotThrow(() -> sortedArrayToBST.checkInvariants(root));
+        }
+    }
+
+    // Generates arrays of integers that are sorted in ascending order
+    @Provide
+    Arbitrary<int[]> sortedArrays() {
+        return Arbitraries.integers().between(Integer.MIN_VALUE, Integer.MAX_VALUE)
+                .array(int[].class)
+                .uniqueElements()
+                .ofMaxSize(10^4)
+                .map(array -> Arrays.stream(array).sorted().toArray());
+    }
+
 
 }
