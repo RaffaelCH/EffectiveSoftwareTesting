@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
@@ -12,6 +13,8 @@
         <option value="$PROJECT_DIR$/assignment01/median_of_arrays/pom.xml" />
         <option value="$PROJECT_DIR$/assignment01/generate_parentheses/pom.xml" />
         <option value="$PROJECT_DIR$/assignment02/ClimbingStairs/pom.xml" />
+        <option value="$PROJECT_DIR$/assignment02/MergeKSortedLists/pom.xml" />
+        <option value="$PROJECT_DIR$/assignment02/SortedArray2BST/pom.xml" />
       </list>
     </option>
   </component>
