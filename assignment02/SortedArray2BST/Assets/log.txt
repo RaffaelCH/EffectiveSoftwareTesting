@@ -1,0 +1,73 @@
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< zest:sorted-array-2-bst >-----------------------
+[INFO] Building sorted-array-2-bst 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- jacoco:0.8.7:prepare-agent (default) @ sorted-array-2-bst ---
+[INFO] argLine set to "-javaagent:/Users/tjoos/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar=destfile=/Users/tjoos/Documents/UZH/FS24/Efficient Software Testing/Projects/EfficientSoftwareTesting/assignment02/SortedArray2BST/target/jacoco.exec"
+[INFO]
+[INFO] --- resources:3.3.1:resources (default-resources) @ sorted-array-2-bst ---
+[INFO] skip non existing resourceDirectory /Users/tjoos/Documents/UZH/FS24/Efficient Software Testing/Projects/EfficientSoftwareTesting/assignment02/SortedArray2BST/src/main/resources
+[INFO]
+[INFO] --- compiler:3.11.0:compile (default-compile) @ sorted-array-2-bst ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 1 source file with javac [debug target 11] to target/classes
+[WARNING] Systemmodulpfad nicht zusammen mit -source 11 festgelegt
+[INFO]
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ sorted-array-2-bst ---
+[INFO] skip non existing resourceDirectory /Users/tjoos/Documents/UZH/FS24/Efficient Software Testing/Projects/EfficientSoftwareTesting/assignment02/SortedArray2BST/src/test/resources
+[INFO]
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ sorted-array-2-bst ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 1 source file with javac [debug target 11] to target/test-classes
+[WARNING] Systemmodulpfad nicht zusammen mit -source 11 festgelegt
+[INFO]
+[INFO] --- surefire:3.2.2:test (default-test) @ sorted-array-2-bst ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO]
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running zest.SortedArrayToBSTTest
+[INFO] Running zest.SortedArrayToBSTTest$ContactTests
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in zest.SortedArrayToBSTTest$ContactTests
+[INFO] Running zest.SortedArrayToBSTTest$CodeCoverageTests
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s -- in zest.SortedArrayToBSTTest$CodeCoverageTests
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in zest.SortedArrayToBSTTest
+[INFO] Running zest.SortedArrayToBSTTest
+timestamp = 2024-04-21T13:52:20.497422, SortedArrayToBSTTest:testSortedArrayToBST =
+                              |-----------------------jqwik-----------------------
+tries = 1000                  | # of calls to property
+checks = 1000                 | # of not rejected calls
+generation = RANDOMIZED       | parameters are randomly generated
+after-failure = SAMPLE_FIRST  | try previously failed sample, then previous seed
+when-fixed-seed = ALLOW       | fixing the random seed is allowed
+edge-cases#mode = MIXIN       | edge cases are mixed in
+edge-cases#total = 10         | # of all combined edge cases
+edge-cases#tried = 10         | # of edge cases tried in current run
+seed = -8907993049769589744   | random seed to reproduce generated values
+
+
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.150 s -- in zest.SortedArrayToBSTTest
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO]
+[INFO] --- jacoco:0.8.7:report (report) @ sorted-array-2-bst ---
+[INFO] Loading execution data file /Users/tjoos/Documents/UZH/FS24/Efficient Software Testing/Projects/EfficientSoftwareTesting/assignment02/SortedArray2BST/target/jacoco.exec
+[INFO] Analyzed bundle 'sorted-array-2-bst' with 2 classes
+[INFO]
+[INFO] --- jar:3.3.0:jar (default-jar) @ sorted-array-2-bst ---
+[INFO] Building jar: /Users/tjoos/Documents/UZH/FS24/Efficient Software Testing/Projects/EfficientSoftwareTesting/assignment02/SortedArray2BST/target/sorted-array-2-bst-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.524 s
+[INFO] Finished at: 2024-04-21T13:52:20+02:00
+[INFO] ------------------------------------------------------------------------
+
+Process finished with exit code 0
