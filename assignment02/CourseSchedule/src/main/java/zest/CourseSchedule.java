@@ -11,6 +11,7 @@ public class CourseSchedule {
             assert prerequisite.length == 2;
             assert prerequisite[0] >= 0;
             assert prerequisite[1] >= 0;
+            assert prerequisite[0] < numCourses;
             assert prerequisite[1] < numCourses;
             assert prerequisite[0] != prerequisite[1];
         }
