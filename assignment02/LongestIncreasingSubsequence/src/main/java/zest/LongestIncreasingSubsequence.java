@@ -2,7 +2,10 @@ package zest;
 
 public class LongestIncreasingSubsequence {
     public int lengthOfLIS(int[] nums) {
-        if (nums == null || nums.length == 0) {
+        if (nums == null) {
+            throw new NullPointerException("Input array cannot be null");
+        }
+        if (nums.length == 0) {
             return 0;
         }
 
@@ -25,4 +28,3 @@ public class LongestIncreasingSubsequence {
         return maxLength;
     }
 }
-
