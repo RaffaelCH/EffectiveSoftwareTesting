@@ -6,18 +6,20 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="MovieStreaming" />
+        <module name="median-of-arrays" />
+        <module name="generate-parentheses" />
+        <module name="course-schedule" />
         <module name="frac-2-dec" />
         <module name="sorted-array-2-bst" />
         <module name="palindrome" />
         <module name="combination-sum" />
         <module name="climbing-stairs" />
         <module name="atoi-test" />
-        <module name="median-of-arrays" />
-        <module name="generate-parentheses" />
         <module name="maximum-subarray" />
         <module name="merge-k-sorted-lists" />
         <module name="needle-in-hay" />
-        <module name="course-schedule" />
+        <module name="CustomerSupportSystem" />
       </profile>
     </annotationProcessing>
   </component>
