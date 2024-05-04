@@ -31,17 +31,19 @@
     </dependencies>
 
     <build>
+        <pluginManagement>
         <plugins>
             <!-- Maven Surefire Plugin for running tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>**3.0.0-M7**</version>
+                <version>3.2.5</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
                 </configuration>
             </plugin>
         </plugins>
+        </pluginManagement>
 
     </build>
 
