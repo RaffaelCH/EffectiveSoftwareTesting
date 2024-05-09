@@ -147,7 +147,62 @@ public class BusTrackerTest {
         VerifyNotification(notificationMessages.get(2), keyLocation2.getWaypointName());
     }
 
+    @Test
+    public void Test_GPSFailure() {
+        when(gpsService.getCurrentLocation(busId1)).thenReturn(null);
+
+        busTracker.updateBusLocation(busId1);
+
+        ArgumentCaptor<String> busIdCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> messageCaptor = ArgumentCaptor.forClass(String.class);
+        verify(notificationService).notifyPassengers(busIdCaptor.capture(), messageCaptor.capture());
+        var notificationBusId = busIdCaptor.getValue();
+        var notificationMessage = messageCaptor.getValue();
+        assertEquals(notificationBusId, busId1);
+        VerifyGPSSignalLossMessage(notificationMessage);
+    }
+
+    @Test
+    public void Test_GPSFailure_Repeated() {
+        when(gpsService.getCurrentLocation(busId1)).thenReturn(null);
+
+        busTracker.updateBusLocation(busId1);
+        busTracker.updateBusLocation(busId1);
+        busTracker.updateBusLocation(busId1);
+
+        ArgumentCaptor<String> busIdCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> messageCaptor = ArgumentCaptor.forClass(String.class);
+        verify(notificationService, times(3)).notifyPassengers(busIdCaptor.capture(), messageCaptor.capture());
+        var notificationBusId = busIdCaptor.getValue();
+        var notificationMessage = messageCaptor.getValue();
+        assertEquals(notificationBusId, busId1);
+        VerifyGPSSignalLossMessage(notificationMessage);
+    }
+
+    @Test
+    public void Test_GPSFailure_TemporaryDropout() {
+        when(gpsService.getCurrentLocation(busId1)).thenReturn(location, null, location);
+
+        busTracker.updateBusLocation(busId1);
+        busTracker.updateBusLocation(busId1);
+        busTracker.updateBusLocation(busId1);
+
+        ArgumentCaptor<String> busIdCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> messageCaptor = ArgumentCaptor.forClass(String.class);
+        verify(notificationService).notifyPassengers(busIdCaptor.capture(), messageCaptor.capture());
+        var notificationBusId = busIdCaptor.getValue();
+        var notificationMessage = messageCaptor.getValue();
+        assertEquals(notificationBusId, busId1);
+        VerifyGPSSignalLossMessage(notificationMessage);
+
+        verify(mapService, times(2)).updateMap(busId1, location);
+    }
+
     private void VerifyNotification(String notificationMessage, String waypointName) {
         assertEquals(notificationMessage, "The bus has arrived at " + waypointName);
+    }
+
+    private void VerifyGPSSignalLossMessage(String message) {
+        assertEquals(message, "GPS signal lost. Please check back later.");
     }
 }
