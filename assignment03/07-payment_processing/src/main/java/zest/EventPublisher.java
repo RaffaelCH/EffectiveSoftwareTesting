@@ -2,6 +2,7 @@ package zest;
 
 import java.util.ArrayList;
 import java.util.List;
+import zest.AuditService;
 
 public class EventPublisher {
     private List<AuditService> listeners = new ArrayList<>();

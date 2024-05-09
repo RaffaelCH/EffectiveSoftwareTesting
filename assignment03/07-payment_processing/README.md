@@ -1,8 +1,8 @@
 # Payment Processing System
 
-The `PaymentProcessor` class handles financial transactions for an online marketplace. This class utilizes a TransactionService for processing payments and a FraudDetectionService to ensure transaction security. After a transaction is completed, the PaymentProcessor uses an AuditService to log transaction details. The AuditService subscribes to transaction completion events through the EventPublisher class, which invokes the onTransactionComplete method of each listener after a transaction is processed.
+The `PaymentProcessor` class handles financial transactions for an online marketplace. This class utilizes a TransactionService for processing payments and a FraudDetectionService to ensure transaction security. After a transaction is completed, the PaymentProcessor uses an AuditService to log transaction details. The AuditService subscribes to transaction completion events through the zest.EventPublisher class, which invokes the onTransactionComplete method of each listener after a transaction is processed.
 
-Write *unit tests* for the `publishTransactionComplete` method of the `EventPublisher`  class using test doubles, after refactoring the code accordingly if needed.
+Write *unit tests* for the `publishTransactionComplete` method of the `zest.EventPublisher`  class using test doubles, after refactoring the code accordingly if needed.
 
 Specifically, implement tests that cover the following scenarios:
 
