@@ -1,37 +1,84 @@
 package zest;
 
-import org.junit.jupiter.api.Test;
+import static org.mockito.Mockito.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mockito;
+import org.junit.jupiter.params.ParameterizedTest;
+
 
 public class TicketManagerTest {
+    private TicketManager ticketManager;
+    private TicketRepository ticketRepository;
+    private NotificationService notificationService;
+    private LogService logService;
 
-    // use mocks to test the TicketManager class (createTicket method)
-    @Test
-    public void testCreateTicket() {
-        NotificationService nS = Mockito.mock(NotificationService.class);
-        LogService lS = Mockito.mock(LogService.class);
-        TicketRepository tR = Mockito.mock(TicketRepository.class);
+    @BeforeEach
+    public void setUp() {
+        notificationService = Mockito.mock(NotificationService.class);
+        logService = Mockito.mock(LogService.class);
 
-        // create a TicketManager object with the mocks
-        TicketManager tm = new TicketManager(nS, lS, tR);
+        ticketRepository = ticket -> {};
 
-        // create a ticket
-        TicketPriority prio = TicketPriority.NORMAL;
-        Ticket ticket = new Ticket("email", "description", prio);
-
-        // call the createTicket method
-        tm.createTicket(ticket);
-
-        // verify that the logTicketCreation method was called
-        Mockito.verify(lS).logTicketCreation(ticket);
-
-        // verify that the notifyCustomer method was called
-        Mockito.verify(nS).notifyCustomer("email", "Thank you for your request. Your support ticket has been created and will be processed shortly.");
-
-        // verify that the save method was called
-        Mockito.verify(tR).save(ticket);
+        ticketManager = new TicketManager(notificationService, logService, ticketRepository);
 
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "email@email.com,My computer does not work!",",",",My computer does not work!","email@email.com,","t@t.com,Test",
+            "thisisaverylongemailthatcouldbeusedinwhateverscenario@thisisaverylongdomain.co.uk,This is a very long issue description that could be used in whatever scenario",
+            "a123@x.com,Description"
+    })
+    public void testLogTicketCreationNormalPriority(String email, String issueDescription) {
+        Ticket ticket = new Ticket(email, issueDescription, TicketPriority.NORMAL);
+
+        ticketManager.createTicket(ticket);
+
+        verify(logService, times(1)).logTicketCreation(ticket);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "email@email.com,My computer does not work!",",",",My computer does not work!","email@email.com,","t@t.com,Test",
+            "thisisaverylongemailthatcouldbeusedinwhateverscenario@thisisaverylongdomain.co.uk,This is a very long issue description that could be used in whatever scenario",
+            "a123@x.com,Description"
+    })
+    public void testLogTicketCreationUrgentPriority(String email, String issueDescription) {
+        Ticket ticket = new Ticket(email, issueDescription, TicketPriority.URGENT);
+
+        ticketManager.createTicket(ticket);
+
+        verify(logService, times(1)).logTicketCreation(ticket);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "email@email.com,My computer does not work!",",",",My computer does not work!","email@email.com,","t@t.com,Test",
+            "thisisaverylongemailthatcouldbeusedinwhateverscenario@thisisaverylongdomain.co.uk,This is a very long issue description that could be used in whatever scenario",
+            "a123@x.com,Description"
+    })
+    public void testNotifyCustomerNormalPriority(String email, String issueDescription) {
+        Ticket ticket = new Ticket(email, issueDescription, TicketPriority.NORMAL);
+
+        ticketManager.createTicket(ticket);
+
+        verify(notificationService, times(1)).notifyCustomer(ticket.getCustomerEmail(), "Thank you for your request. Your support ticket has been created and will be processed shortly.");
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "email@email.com,My computer does not work!",",",",My computer does not work!","email@email.com,","t@t.com,Test",
+            "thisisaverylongemailthatcouldbeusedinwhateverscenario@thisisaverylongdomain.co.uk,This is a very long issue description that could be used in whatever scenario",
+            "a123@x.com,Description"
+    })
+    public void testNotifyCustomerUrgentPriority(String email, String issueDescription) {
+        Ticket ticket = new Ticket(email, issueDescription, TicketPriority.URGENT);
+
+        ticketManager.createTicket(ticket);
+
+        verify(notificationService, times(1)).notifyCustomer(ticket.getCustomerEmail(), "Thank you for your request. Your support ticket has been created and will be processed shortly.");
+    }
 
 }
