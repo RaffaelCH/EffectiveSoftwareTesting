@@ -27,10 +27,29 @@ Our unit tests then sometimes fail, e.g. because the external email server is do
 or sometimes take a long time to run, when the internet speed is slow.
 As unit tests must be fast, reliable and not flaky, the `NotificationService` should be mocked in the tests.
 #### Test Doubles Usage
-<!--- TODO --->
-We implemented...
+We implemented tests that mock the `NotifiactionService` and the `LogService`. We also decided to mock the `TicketRepository` class, as it could be another external dependency that could be slow or otherwise unreliable.
+All three classes are mocked using Mockito. The tests are in the `TicketManagerTest` class in the `src/test/java/zest/` folder.
+We also need a `@BeforeEach` method that initializes the `TicketManager` class (which is not mocked, but uses mocks).
 
-<!--- Implement tests using mocks for `NotificationService` and `LogService` to verify if the services are called correctly. --->
+The **first** test is a parametrized test, which tests the `createTicket` method.
+We define a CsvSource with the following values:
+- an input that could happen likely in a real system
+- a very short input
+- a very long input
+- an input with special characters
+
+We use the doNothing() method of Mockito to mock the `LogService` and `NotificationService` classes.
+Then, we use the `createTicket` method of the `TicketManager` class to create a ticket.
+We verify that the `LogService` and `NotificationService` classes are called correctly.
+
+The **second** test tests a failure in the `NotificationService` class.
+To do so, we use the `doThrow` method of Mockito to throw a `RuntimeException` when the `notifyCustomer` method is called.
+Then, we check that the `createTicket` method of the `TicketManager` throws the `RuntimeException` (we compare its exception messages).
+Now, we also verify that `logTicketCreation` and `notifyCustomer` are called exactly once.
+
+The **third** test tests a failure in the `LogService` class.
+It works analogously to the second test, but with the `logTicketCreation` method.
+We further verify that the `notifyCustomer` method is never called.
 
 ### Disadvantages of Using Doubles in Your Tests
 There are disadvantages in using doubles in this scenario.
@@ -48,12 +67,14 @@ Another disadvantage is that the tests can become more complex and harder to und
 When using doubles, we have to write the mock objects, set up the mocks, and verify the mocks.
 
 ### Handling of Failures in Notification and Logging
-<!--- TODO --->
+In our tests, we simulated failures in the `NotificationService` and `LogService` classes.
+We did this by throwing a `RuntimeException` when the `notifyCustomer` or `logTicketCreation` methods are called.
+We then checked that the `createTicket` method of the `TicketManager` class throws the `RuntimeException`.
+The code is resilient, as it catches the exception and does not crash.
 
-<!--- Simulate failures in notification and logging. 
-Ensure the ticket creation process is resilient and completed successfully despite these challenges. --->
+The code is not very resilient against bugs.
+For example, the `createTicket` method doesn't do any error handling. 
+We could surround the calls to external dependencies with a try-catch block and handle exceptions.
 
-## Automate the Test Cases
-<!--- TODO --->
-
-<!--- Automate the test cases using the JUnit5 plugin in the `src/test/java/zest/` folder. --->
+Further, it is good for testability that the external code is passed via the constructor.
+Instead of the NotificationService and LogService, we could pass a NotificationService and LogService interface to the `createTicket` method as well, not having to use mocks, but pass our own classes to the method.
