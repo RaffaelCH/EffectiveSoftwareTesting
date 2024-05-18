@@ -13,6 +13,7 @@
         <module name="frac-2-dec" />
         <module name="sorted-array-2-bst" />
         <module name="palindrome" />
+        <module name="BookReviews" />
         <module name="combination-sum" />
         <module name="climbing-stairs" />
         <module name="atoi-test" />

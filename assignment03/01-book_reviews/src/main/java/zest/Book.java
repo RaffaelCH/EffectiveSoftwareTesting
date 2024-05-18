@@ -1,3 +1,5 @@
+package zest;
+
 public class Book {
     private String title;
     private int rating; // Rating on a scale from 1 to 5
