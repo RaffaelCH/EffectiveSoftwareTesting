@@ -4,9 +4,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -103,5 +106,41 @@ public class BookManagerTest {
                 && bookManager.highRatedBooks().contains(book4) && bookManager.highRatedBooks().contains(book5));
         assertEquals(4, bookManager.highRatedBooks().size());
     }
+
+    @Test
+    public void testUniqueAuthors_ReturnsUniqueAuthors() throws Exception {
+        // Arrange (mock BookRatingsFetcher)
+        BookRatingsFetcher mockFetcher = Mockito.mock(BookRatingsFetcher.class);
+        List<Book> books = new ArrayList<>();
+        books.add(new Book("Book A", 4, "Author 1"));
+        books.add(new Book("Book B", 3, "Author 2"));
+        books.add(new Book("Book C", 5, "Author 1")); // Duplicate author
+    
+        Mockito.when(mockFetcher.all()).thenReturn(books);
+        BookManager bookManager = new BookManager(mockFetcher);
+    
+        // Act
+        List<String> uniqueAuthors = bookManager.uniqueAuthors();
+    
+        // Assert
+        assertEquals(2, uniqueAuthors.size()); // Expecting 2 unique authors
+        assertTrue(uniqueAuthors.contains("Author 1"));
+        assertTrue(uniqueAuthors.contains("Author 2"));
+      }
+
+    @Test
+    public void testUniqueAuthors_EmptyBookListReturnsEmptyList() throws Exception {
+    // Arrange (mock BookRatingsFetcher to return an empty list)
+    BookRatingsFetcher mockFetcher = Mockito.mock(BookRatingsFetcher.class);
+    Mockito.when(mockFetcher.all()).thenReturn(Collections.emptyList());
+    BookManager bookManager = new BookManager(mockFetcher);
+
+    // Act
+    List<String> uniqueAuthors = bookManager.uniqueAuthors();
+
+    // Assert
+    assertTrue(uniqueAuthors.isEmpty());
+}
+
 
 }

@@ -23,8 +23,12 @@ public class BookManager {
         }
     }
 
-    public List<String> uniqueAuthors(){
-        //TODO
-        return null;
-    }
+    public List<String> uniqueAuthors() throws Exception {
+        List<Book> allBooks = bookRatingsFetcher.all();
+        return allBooks.stream()
+            .map(Book::getAuthor)   // Extract author names
+            .distinct()             // Remove duplicates
+            .collect(toList());     // Convert to a list
+      }
+      
 }
