@@ -4,10 +4,10 @@
 As the `FileStreamService` and `CacheService` interfaces are external dependencies of the `MovieStreamingManager` class, we to created test doubles for these services. 
 These doubles allowed us to isolate the unit tests for the `MovieStreamingManager` from external systems.
 In our unit tests, we use Mockito to create mock instances of these services. 
-Like that, we were able to specify and verify interactions with these dependencies, such that that the `MovieStreamingManager` interacts correctly with the dependencies.
+Like that, we were able to specify and verify interactions with these dependencies, such that the `MovieStreamingManager` interacts correctly with the dependencies.
 
 ## Mocking File System and Cache Interactions
-Mocking is important for simulating the behavior of external systems associated with file operations and caching mechanisms:
+Mocking is important for simulating the behaviour of external systems which do file operations (read/write etc.) and caching:
 
 ### FileStreamService
 - **Mocking Movie Retrieving and Token Generation**:
@@ -16,9 +16,9 @@ By mocking `FileStreamService`, we can specify the return values and verify that
 
 ### CacheService
 - **Mocking Cache Operations**: 
-The cache is an important aspect of the system that improves performance by reducing the need to fetch frequently accessed data repeatedly. 
-In our tests, we mock methods like `getDetails()` and `cacheDetails()` to test both cache hits and misses.
-This helps to verify that the `MovieStreamingManager` properly checks the cache before accessing the file system and correctly caches new data when necessary.
+The cache is important to performance by reducing the need to fetch frequently accessed data repeatedly. 
+In our tests, we change the return objects of `getDetails()` and `cacheDetails()`.
+This helps to verify that the `MovieStreamingManager` correctly checks the cache before accessing the file system and caches the data.
 
 ## Handling of Failures
 Testing how the system handles failures is as important as testing its successful operation. 
