@@ -1,3 +1,5 @@
+package zest;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,5 +14,9 @@ public class EventPublisher {
         for (EventListener listener : listeners) {
             listener.onOrderPlaced(order);
         }
+    }
+
+    public List<EventListener> getListeners() {
+        return listeners;
     }
 }
