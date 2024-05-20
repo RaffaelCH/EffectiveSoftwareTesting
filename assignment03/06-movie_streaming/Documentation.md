@@ -10,22 +10,19 @@ Like that, we were able to specify and verify interactions with these dependenci
 Mocking is important for simulating the behaviour of external systems which do file operations (read/write etc.) and caching:
 
 ### FileStreamService
-- **Mocking Movie Retrieving and Token Generation**:
-We simulate the retrieval of movie metadata and generation of streaming tokens without actual file system access. 
-By mocking `FileStreamService`, we can specify the return values and verify that the correct methods are called, e.g., `retrieveMovie()` and `generateToken()` to ensure that movie details are fetched and tokens are generated correctly.
+- **Mocking Movie Retrieving and Token Receiving**:
+We simulate the getting of movies and the getting of tokens. 
+We "mock" the `FileStreamService` to specify the return values, verifying that the correct methods are called, e.g., `retrieveMovie()` and `generateToken()`.
 
 ### CacheService
 - **Mocking Cache Operations**: 
-The cache is important to performance by reducing the need to fetch frequently accessed data repeatedly. 
-In our tests, we change the return objects of `getDetails()` and `cacheDetails()`.
+A cache is important to improve the performance of a system, such that a database does not need to be accessed for every request.
+We change the return objects of `getDetails()` and `cacheDetails()`.
 This helps to verify that the `MovieStreamingManager` correctly checks the cache before accessing the file system and caches the data.
 
-## Handling of Failures
-Testing how the system handles failures is as important as testing its successful operation. 
-Our tests simulate different failure scenarios to ensure robustness:
+## Handling of Failures 
+Our tests simulate these failure scenarios to ensure robustness:
 
-- **File System Failures**: By using Mockito's `thenThrow` method, we simulate exceptions that could occur during file system operations. For instance, if the file system service fails when attempting to retrieve movie metadata, our tests can assert that the system handles these exceptions gracefully, perhaps by logging the error or by rethrowing an exception with a user-friendly message.
+- **File System Failures**: We use the `thenThrow` method provided by Mockito, to simulate exceptions that could occur during file system operations. For instance, if the file system service fails when attempting to retrieve movie metadata, we assert that the system handles these exceptions correctly. This can be for example by logging the error or by rethrowing an exception with a user-friendly message.
 
-- **Cache Service Unavailability**: Similarly, we test how the system behaves if the cache service is temporarily unavailable. Our tests ensure that such failures do not crash the system and that appropriate fallbacks or error messages are implemented.
-
-Each of these sections in the testing documentation helps ensure that the `MovieStreamingManager` is thoroughly evaluated under both normal and exceptional conditions, leading to a more reliable and maintainable system.
+- **Cache Service Unavailability**: In a similar way, we test how the system behaves if the cache service is not available the moment. Our tests ensure that the failures do not crash the system completely.
