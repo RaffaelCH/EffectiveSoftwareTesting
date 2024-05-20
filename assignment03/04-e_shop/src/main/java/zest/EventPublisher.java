@@ -11,6 +11,9 @@ public class EventPublisher {
     }
 
     public void publishOrderToAllListeners(Order order) {
+        if (order == null) {
+            throw new NullPointerException("Order cannot be null");
+        }
         for (EventListener listener : listeners) {
             listener.onOrderPlaced(order);
         }

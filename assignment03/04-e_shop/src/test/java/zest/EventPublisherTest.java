@@ -1,6 +1,7 @@
 package zest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 import java.util.List;
@@ -73,4 +74,35 @@ public class EventPublisherTest {
         assertEquals(order, emailNotificationService.getLastProcessedOrder());
         assertEquals(order, inventoryManager.getLastProcessedOrder());
     }
+
+
+    // Test Empty listener list
+    @Test
+    public void testPublishOrderToAllListeners_EmptyListenerList() {
+        eventPublisher.publishOrderToAllListeners(new Order("order3", 300.0)); // No subscribers
+        // No verification needed as no listeners to invoke methods on
+    }
+
+    // Test Null order
+    @Test
+    public void testPublishOrderToAllListeners_NullOrder() {
+        assertThrows(NullPointerException.class, () -> eventPublisher.publishOrderToAllListeners(null));
+    }
+
+    // Test Exception handling (if applicable) - Modify if there's specific exception handling in EventPublisher
+    @Test
+    public void testPublishOrderToAllListeners_ExceptionHandling() {
+        // Modify based on the specific exception handling logic in EventPublisher
+        doThrow(new RuntimeException("Simulated exception")).when(mockEmailNotificationService).onOrderPlaced(any(Order.class));
+
+        eventPublisher.subscribe(mockEmailNotificationService);
+        eventPublisher.subscribe(mockInventoryManager);
+
+        assertThrows(RuntimeException.class, () -> eventPublisher.publishOrderToAllListeners(new Order("order4", 400.0)));
+
+        // Verify that onOrderPlaced is still called on the non-failing listener (mockInventoryManager)
+        // verify(mockInventoryManager, times(1)).onOrderPlaced(any(Order.class));
+    }
+
+    
 }

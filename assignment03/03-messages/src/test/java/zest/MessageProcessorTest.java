@@ -1,6 +1,9 @@
 package zest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
@@ -76,4 +79,37 @@ public class MessageProcessorTest {
         }
         return messages;
     }
+
+    @Test
+    public void testProcessMessages_EmptyList() {
+        List<Message> emptyList = new ArrayList<>();
+        MessageProcessor processor = new MessageProcessor(mockMessageService);
+        
+        processor.processMessages(emptyList);
+        
+        verify(mockMessageService, never()).sendMessage(anyString(), anyString());
+    }
+
+    @Test
+    public void testProcessMessages_NullMessage() {
+        List<Message> messages = new ArrayList<>();
+        messages.add(null);
+        MessageProcessor processor = new MessageProcessor(mockMessageService);
+
+        assertThrows(NullPointerException.class, () -> processor.processMessages(messages));
+    }
+
+    @Test
+    public void testProcessMessages_MessagingServiceException() {
+        List<Message> messages = createMessages(1);
+        MessageProcessor processor = new MessageProcessor(mockMessageService);
+        
+        // Simulate exception during sending
+        doThrow(new RuntimeException("Simulated exception")).when(mockMessageService).sendMessage(anyString(), anyString());
+        
+        assertThrows(RuntimeException.class, () -> processor.processMessages(messages));
+}
+
+
+
 }
